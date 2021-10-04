@@ -1,7 +1,6 @@
 {
   "usesTypeScript": false,
-  "usesCssModule": true,
-  "cssPreprocessor": "scss",
+  "usesCssModule": false,
   "testLibrary": "None",
   "component": {
     "default": {
@@ -11,5 +10,6 @@
       "withStory": false,
       "withLazy": false
     }
-  }
+  },
+  "cssPreprocessor": "css"
 }

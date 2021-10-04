@@ -1,0 +1,66 @@
+.main-header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main-header a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.container {
+  max-width: 1840px;
+  border-bottom: 1px solid var(--white);
+}
+
+.header-logo {
+  font-family: SaolDisplay, Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--white);
+  margin: 20px 0 12px 0;
+}
+
+.header-navbar {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.header-navbar .header-menu {
+  display: flex;
+}
+
+.header-navbar .menu-item {
+  margin-left: 30px;
+}
+
+.header-navbar .menu-link {
+  font-family: NittiGrotesk, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.header-utilities {
+  display: flex;
+  align-items: center;
+}
+
+.header-utilities .lang-switch {
+  margin-right: 61px;
+  font-family: Kalameh, sans-serif, Helvetica, Arial;
+  font-size: 16px;
+}
+
+.header-utilities .instagram {
+  width: 20px;
+  height: 20px;
+}
+
+.header-utilities .header-utilities-menu {
+  display: flex;
+  align-items: center;
+}
