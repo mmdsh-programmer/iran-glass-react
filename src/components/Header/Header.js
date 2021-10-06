@@ -33,10 +33,10 @@ export default function Header() {
                 <Link className={`${styles["menu-link"]} ${styles["lang-switch"]}`} to="/">فارسی</Link>
               </li>
               <li className={styles["menu-item"]}>
-                <Link className={styles["menu-link"]} to="/">
+                <a className={styles["menu-link"]} href="https://www.instagram.com" target="_blank" rel="noreferrer">
                   <img src="/images/social-icons/instagram.svg" alt="instagram" title="instagram"
                     className={styles["instagram"]} />
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
