@@ -138,6 +138,12 @@ table {
     --white: #fff;
     --hero-text: #263238;
     --grey-darken-1: #757575;
+    --grey-lighten: linear-gradient(
+      to bottom,
+      rgba(238, 238, 238, 0) 69%,
+      #a7a8aa
+    );
+    --hero-text: #263238;
   }
 }
 
