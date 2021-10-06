@@ -1,0 +1,99 @@
+.main-footer .container {
+  max-width: 1840px;
+}
+
+.subscribe dt {
+  font-family: SaolDisplay, sans-serif, Helvetica, Arial;
+  font-size: 43px;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.subscribe dd {
+  margin: 0 0 110px 0;
+  font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
+  font-size: 31px;
+  font-weight: 300;
+  color: var(--grey-darken-1);
+}
+
+.main-footer .footer-info-title {
+  margin-bottom: 30px;
+  font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.main-footer .footer-info-address,
+.main-footer .footer-info-postcode {
+  color: var(--white);
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.no-title .menu-item:first-child {
+  margin-top: 60px;
+  width: auto;
+}
+
+.main-footer .menu-item {
+  margin-bottom: 15px;
+  max-width: 216px;
+}
+
+.main-footer .menu-item:last-child {
+  margin-bottom: 0;
+}
+
+.main-footer .menu-link {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.main-footer .col-3:nth-child(1) {
+  margin-right: 116px;
+}
+
+.main-footer .col-3:nth-child(2) {
+  margin-right: 445px;
+}
+
+.main-footer .col-3:nth-child(3) {
+  margin-right: 300px;
+}
+
+.main-footer .footer-copyright {
+  justify-content: space-between;
+  align-items: center;
+  margin: 96px 0 56px 0;
+}
+
+.footer-copyright .footer-copyright-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-copyright-menu .menu-item {
+  margin-right: 45px;
+  margin-bottom: 0;
+}
+
+.footer-copyright-menu .menu-link {
+  font-size: 25px;
+  font-weight: 300;
+  font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
+  text-decoration: none;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.footer-copyright .copyright-link {
+  text-decoration: none;
+  font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--white);
+}
