@@ -34,7 +34,6 @@
   grid-row: 2/3;
   font-family: SaolDisplay, sans-serif, Helvetica, Arial;
   font-size: clamp(4vw, 8vw, 154px);
-  font-weight: 300;
   color: var(--hero-text);
 }
 
@@ -51,7 +50,6 @@
 .hero .hero-subtitle {
   font-family: SaolDisplay, sans-serif, Helvetica, Arial;
   font-size: clamp(2vw, 2.98vw, 55px);
-  font-weight: 300;
   color: var(--hero-text);
   margin-left: clamp(50px, 21vw, 407px);
 }
@@ -73,9 +71,8 @@
 
 .hero .hero-description {
   margin-left: 59px;
-  font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
+  font-family: NittiGrotesk-Light, sans-serif, Helvetica, Arial;
   font-size: clamp(20px, 1.46vw, 28px);
-  font-weight: 300;
   line-height: 1.25;
   color: var(--hero-text);
   max-width: 500px;
@@ -87,7 +84,6 @@
   color: #fff;
   font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
   font-size: clamp(18px, 1vw, 20px);
-  font-weight: 500;
   line-height: 1.75;
   text-transform: uppercase;
   position: relative;
