@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 
@@ -15,8 +14,10 @@ export default function Home() {
             <span className={`block ${styles["ml-custom"]}`}>Technology</span>
           </h1>
           <div className={styles["hero-subtitle-container"]}>
-            <h3 className={styles["hero-subtitle"]}>Decoration</h3>
-            <h3 className={styles["hero-subtitle"]}>& Smart Mirors</h3>
+            <h3 className={styles["hero-subtitle"]}>
+              <span className="block">Decoration</span>
+              <span className="block">& Smart Mirors</span>
+            </h3>
             <img
               className={styles["scroll-down"]}
               src="images/home/scroll.svg"
@@ -60,6 +61,72 @@ export default function Home() {
               alt="quote image"
               title="quote image"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles["works"]}>
+        <header className={styles["works-header-holder"]}>
+          <h2 className={styles["works-header"]}>
+            We are producer of decoration & smart mirors
+          </h2>
+        </header>
+
+        <div className={`container ${styles["container"]}`}>
+          <div className={`row wrap ${styles["custom-gap"]}`}>
+            <article className={`row ${styles["work-item"]}`}>
+              <div className="col">
+                <div className={styles["item-image-holder"]}>
+                  {/* <h3 className={styles["item-title"]}>Decoration Mirors</h3> */}
+                  <img
+                    className={styles["item-image"]}
+                    src="images/home/work-1.jpg"
+                    alt="work 1"
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <h3 className={styles["item-title"]}>Decoration Mirors</h3>
+                <p className={styles["item-description"]}>
+                  Iran Glass Technology with more than 40 years of experience
+                  and with the aim of meeting the needs of customers and
+                  improving the quality of products since 2001 has changed its
+                  name and created the Iranian glass technology brand (with the
+                  brand name Gilda Glass)
+                </p>
+                <MoreButton to="/" className={styles["info-button"]}>
+                  More information
+                </MoreButton>
+              </div>
+            </article>
+
+            <article
+              className={`row ${styles["work-item"]} ${styles["reverse"]}`}
+            >
+              <div className={`col ${styles["order-desktop-2"]}`}>
+                <div className={styles["item-image-holder"]}>
+                  {/* <h3 className={styles["item-title"]}>Decoration Mirors</h3> */}
+                  <img
+                    className={styles["item-image"]}
+                    src="images/home/work-2.jpg"
+                    alt="work 2"
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <h3 className={styles["item-title"]}>Smart Monitor Mirors</h3>
+                <p className={styles["item-description"]}>
+                  Iran Glass Technology with more than 40 years of experience
+                  and with the aim of meeting the needs of customers and
+                  improving the quality of products since 2001 has changed its
+                  name and created the Iranian glass technology brand (with the
+                  brand name Gilda Glass)
+                </p>
+                <MoreButton to="/" className={styles["info-button"]}>
+                  More information
+                </MoreButton>
+              </div>
+            </article>
           </div>
         </div>
       </section>
