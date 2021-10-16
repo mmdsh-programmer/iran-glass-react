@@ -179,12 +179,12 @@
   padding-top: 299px;
   border-top-left-radius: 960px;
   border-top-right-radius: 960px;
-  border: solid 1px #979797;
+  border-top: solid 1px #979797;
   background-color: var(--grey-darken-3);
 }
 
 .works .container {
-  max-width: 1613px;
+  max-width: 1640px;
 }
 
 .works .custom-gap {
@@ -211,28 +211,46 @@
   width: 1000px;
   height: 1000px;
   position: relative;
+  overflow: hidden;
+}
+
+.work-item .item-image-holder .item-title {
+  position: absolute;
+  -webkit-text-stroke: 1px #37474f;
+  font-family: NittiGrotesk;
+  font-size: 148px;
+  line-height: 0.82;
+  color: rgba(33, 33, 33, 0);
+  z-index: 3;
+  left: 1000px;
+}
+
+.work-item.reverse .item-image-holder .item-title {
+  left: -640px;
 }
 
 .work-item .item-image-holder .item-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
 }
 
 .work-item .item-title {
-  max-width: 652px;
+  width: 890px;
   margin: 168px 0 60px 0;
   font-family: NittiGrotesk;
   font-size: 148px;
   line-height: 0.82;
   color: var(--grey-lighten-3);
   position: relative;
-  z-index: 2;
+  z-index: 1;
   transform: translateX(-205px);
 }
 
 .work-item.reverse .item-title {
-  transform: translateX(310px);
+  transform: translateX(340px);
 }
 
 .work-item .item-description {
@@ -246,4 +264,57 @@
 
 .work-item .info-button {
   margin-left: 139px;
+}
+
+.work-item .col:nth-child(2) {
+  max-width: 640px;
+}
+
+/* --------contact----------- */
+
+.contact {
+  margin-top: 328px;
+  padding-bottom: 389px;
+}
+
+.contact .curved-text {
+  width: 984px;
+  height: 862px;
+  padding: 276px 384px 376px 1px;
+  transform: rotate(21deg);
+  background-color: var(--grey-lighten-1);
+}
+
+.contact .contact-title,
+.contact .contact-email,
+.contact .follow-instagram {
+  font-family: NittiGrotesk-Light;
+  color: var(--white);
+}
+
+.contact .contact-title {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.contact .contact-email {
+  margin-bottom: 53px;
+  font-size: 60px;
+  text-decoration: none;
+}
+
+.contact .follow-instagram {
+  font-size: 40px;
+}
+
+.follow-instagram .instagram-link {
+  text-decoration: none;
+  font-family: NittiGrotesk;
+  color: var(--white);
+}
+.follow-instagram .instagram-link .instagram-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin: 0 9px 5px 12px;
 }

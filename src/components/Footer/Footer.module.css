@@ -1,3 +1,7 @@
+.main-footer {
+  background-color: var(--grey-darken-3);
+}
+
 .subscribe dt {
   font-family: SaolDisplay, sans-serif, Helvetica, Arial;
   font-size: 43px;
@@ -73,7 +77,7 @@
 .main-footer .footer-copyright {
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 56px 0;
+  padding-bottom: 56px;
 }
 
 .footer-copyright .footer-copyright-menu {

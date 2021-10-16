@@ -75,9 +75,9 @@ export default function Home() {
         <div className={`container ${styles["container"]}`}>
           <div className={`row wrap ${styles["custom-gap"]}`}>
             <article className={`row ${styles["work-item"]}`}>
-              <div className="col">
+              <div className={`${styles["col"]}`}>
                 <div className={styles["item-image-holder"]}>
-                  {/* <h3 className={styles["item-title"]}>Decoration Mirors</h3> */}
+                  <h3 className={styles["item-title"]}>Decoration Mirors</h3>
                   <img
                     className={styles["item-image"]}
                     src="images/home/work-1.jpg"
@@ -85,7 +85,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div className="col">
+              <div className={`${styles["col"]}`}>
                 <h3 className={styles["item-title"]}>Decoration Mirors</h3>
                 <p className={styles["item-description"]}>
                   Iran Glass Technology with more than 40 years of experience
@@ -103,9 +103,9 @@ export default function Home() {
             <article
               className={`row ${styles["work-item"]} ${styles["reverse"]}`}
             >
-              <div className={`col ${styles["order-desktop-2"]}`}>
+              <div className={`${styles["order-desktop-2"]} ${styles["col"]}`}>
                 <div className={styles["item-image-holder"]}>
-                  {/* <h3 className={styles["item-title"]}>Decoration Mirors</h3> */}
+                  <h3 className={styles["item-title"]}>Smart Monitor Mirors</h3>
                   <img
                     className={styles["item-image"]}
                     src="images/home/work-2.jpg"
@@ -113,7 +113,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div className="col">
+              <div className={`${styles["col"]}`}>
                 <h3 className={styles["item-title"]}>Smart Monitor Mirors</h3>
                 <p className={styles["item-description"]}>
                   Iran Glass Technology with more than 40 years of experience
@@ -127,6 +127,35 @@ export default function Home() {
                 </MoreButton>
               </div>
             </article>
+          </div>
+        </div>
+
+        <div className="container">
+          <div className={`row flex-column ${styles["contact"]}`}>
+            <h4 className={styles["contact-title"]}>Simply contact us via</h4>
+            <a
+              className={styles["contact-email"]}
+              href="mailto:contact@iranglass.com"
+            >
+              contact@iranglass.com
+            </a>
+            <p className={styles["follow-instagram"]}>
+              Also you can follow us on
+              <a
+                className={styles["instagram-link"]}
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="images/home/instagram-sketched.svg"
+                  alt="instagram"
+                  title="instagram"
+                  className={styles["instagram-icon"]}
+                />
+                Instagram
+              </a>
+            </p>
           </div>
         </div>
       </section>
