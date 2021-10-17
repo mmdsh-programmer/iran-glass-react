@@ -1,11 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 import styles from "./Footer.module.css";
 
-export default function Footer() {
+export default function Footer(props) {
+  const { classes } = props;
+  const customFooter = classNames(styles["main-footer"], classes);
   return (
-    <footer className={styles["main-footer"]}>
-      <div className={`container ${styles["container"]}`}>
+    <footer className={customFooter}>
+      <div className={`container`}>
+        <div className={`row flex-column ${styles["contact"]}`}>
+          <h4 className={styles["contact-title"]}>Simply contact us via</h4>
+          <a
+            className={styles["contact-email"]}
+            href="mailto:contact@iranglass.com"
+          >
+            contact@iranglass.com
+          </a>
+          <p className={styles["follow-instagram"]}>
+            Also you can follow us on
+            <a
+              className={styles["instagram-link"]}
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="images/home/instagram-sketched.svg"
+                alt="instagram"
+                title="instagram"
+                className={styles["instagram-icon"]}
+              />
+              Instagram
+            </a>
+          </p>
+        </div>
         <div className="row wrap">
           <dl className={styles["subscribe"]}>
             <dt>IGT</dt>

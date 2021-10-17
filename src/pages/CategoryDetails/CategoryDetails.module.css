@@ -1,0 +1,239 @@
+/* --------hero----------- */
+
+.category-body .hero {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.hero .category-header {
+  transform: translateY(280px);
+}
+
+.hero .category-header .header-title {
+  font-family: SaolDisplay;
+  font-size: 154px;
+  color: var(--white);
+  text-align: center;
+}
+
+.hero .category-header .header-subtitle,
+.hero .description {
+  font-family: NittiGrotesk-Light;
+  color: #263238;
+  text-align: center;
+  line-height: 1.07;
+}
+
+.hero .category-header .header-subtitle {
+  max-width: 945px;
+  font-size: 43px;
+  margin: 34px auto 0 auto;
+}
+
+.hero .background {
+  width: 100%;
+  height: 1837px;
+  border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+}
+
+.hero .background .background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hero .description {
+  max-width: 1210px;
+  font-size: 43px;
+  margin: 260px auto 0 auto;
+}
+
+/* --------catalogue----------- */
+
+.catalogue {
+  margin-top: 178px;
+}
+
+.catalogue .container {
+  max-width: 1685px;
+}
+
+.catalogue .catalogue-counter .counter-title {
+  font-family: NittiGrotesk-Light;
+  font-size: 43px;
+  color: var(--white);
+}
+
+.catalogue .catalogue-counter .col-4 {
+  flex: 1;
+  height: 258px;
+}
+
+.catalogue .catalogue-counter .counter-number {
+  font-family: SaolDisplay;
+  font-size: 124px;
+  color: var(--white);
+  line-height: 114px;
+}
+
+.catalogue-data .counter-separator,
+.catalogue .catalogue-counter .counter-separator {
+  width: 1px;
+  height: 53px;
+  background-color: var(--white);
+  transform: rotate(25deg);
+}
+
+.catalogue .catalogue-counter .counter-separator {
+  margin: 81px 20px 0 8px;
+}
+
+.catalogue .catalogue-data {
+  margin-top: 268px;
+}
+
+.catalogue-data .title {
+  margin: 0 0 4px 0;
+  font-family: SaolDisplay;
+  font-size: 98px;
+  color: var(--grey-darken-3);
+}
+
+.catalogue-data .counter-separator {
+  margin: 0 15px 5px 50px;
+}
+
+.catalogue-data .counter-number {
+  font-family: NittiGrotesk-Light;
+  font-size: 38px;
+  color: var(--white);
+}
+
+.catalogue-data .catalogue-data-description {
+  max-width: 758px;
+  margin: 13px 390px 0 70px;
+  font-family: NittiGrotesk-Light;
+  font-size: 28px;
+  line-height: 1.25;
+  color: var(--white);
+}
+
+.catalogue-data .catalogue-data-image {
+  width: 100%;
+  height: 1071px;
+  margin-top: 70px;
+}
+
+.catalogue-data-image .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalogue-data .view-products::before {
+  top: -16px;
+}
+
+/* --------quote----------- */
+
+.category-body .quote {
+  margin-top: 411px;
+}
+
+.quote .quote-text {
+  max-width: 1622px;
+  font-family: SaolDisplay;
+  font-size: 84px;
+  text-align: center;
+  margin: 0 auto;
+  color: var(--white);
+  position: relative;
+}
+
+.quote .quote-text::before {
+  content: "";
+  background-image: url("private-svg/group.svg");
+  background-size: 59px 25px;
+  height: 25px;
+  width: 59px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -50px;
+}
+
+/* --------gallery----------- */
+
+.gallery {
+  margin-top: 370px;
+}
+
+.gallery .gallery-container {
+  grid-template-columns: minmax(300px, 552px) minmax(300px, 691px) minmax(
+      300px,
+      498px
+    );
+  grid-template-rows: mansory;
+  grid-gap: 50px;
+}
+
+.gallery .image-holder {
+  width: 100%;
+  display: inline-block;
+}
+
+.gallery .image-holder:nth-child(1) {
+  height: 790px;
+  line-height: 790px;
+}
+
+.gallery .image-holder:nth-child(2) {
+  height: 846px;
+  line-height: 846px;
+}
+
+.gallery .image-holder:nth-child(3) {
+  height: 496px;
+  line-height: 496px;
+}
+
+.gallery .image-holder:nth-child(4) {
+  height: 552px;
+  line-height: 552px;
+}
+
+.gallery .image-holder:nth-child(5) {
+  height: 917px;
+  line-height: 917px;
+}
+
+.gallery .image-holder:nth-child(6) {
+  height: 734px;
+  line-height: 734px;
+}
+
+.gallery .image-holder:nth-child(7) {
+  height: 351px;
+  line-height: 351px;
+}
+
+.gallery .image-holder:nth-child(8) {
+  height: 776px;
+  line-height: 776px;
+}
+
+.gallery .image-holder:nth-child(9) {
+  height: 653px;
+  line-height: 653px;
+}
+
+.gallery .image-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
