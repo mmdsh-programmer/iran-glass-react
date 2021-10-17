@@ -117,7 +117,7 @@ export default function CategoryDetails() {
         </section>
 
         <section className={styles["gallery"]}>
-          <div className={`container grid ${styles["gallery-container"]}`}>
+          <div className={`container ${styles["gallery-container"]}`}>
             <div className={styles["image-holder"]}>
               <img src="images/home/image-2.png" alt="gallery-item-1" />
             </div>
