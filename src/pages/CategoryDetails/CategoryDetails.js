@@ -117,7 +117,9 @@ export default function CategoryDetails() {
         </section>
 
         <section className={styles["gallery"]}>
-          <div className={`container ${styles["gallery-container"]}`}>
+          <div
+            className={`container row wrap align-center ${styles["gallery-container"]}`}
+          >
             <div className={styles["image-holder"]}>
               <img src="images/home/image-2.png" alt="gallery-item-1" />
             </div>
@@ -164,7 +166,7 @@ export default function CategoryDetails() {
         </section>
       </main>
 
-      <Footer />
+      <Footer classes={styles["custom-footer"]} />
     </>
   );
 }

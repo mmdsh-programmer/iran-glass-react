@@ -125,7 +125,7 @@
 
 .catalogue-data .catalogue-data-image {
   width: 100%;
-  height: 1071px;
+  height: auto;
   margin-top: 70px;
 }
 
@@ -174,54 +174,80 @@
 }
 
 .gallery .gallery-container {
-  columns: 3 300px;
-  grid-gap: 50px;
+  height: 137.4vw;
+  width: 100%;
+  flex-direction: column;
+  column-gap: 2.4vw;
+  row-gap: 2.6vw;
 }
 
 .gallery .image-holder {
-  margin-bottom: 50px;
-}
-
-.gallery .image-holder:nth-child(1) {
-  height: 730px;
-  margin-top: 321px;
-}
-
-.gallery .image-holder:nth-child(2) {
-  height: 552px;
-}
-
-.gallery .image-holder:nth-child(3) {
-  height: 351px;
-}
-
-.gallery .image-holder:nth-child(4) {
-  height: 846px;
-}
-
-.gallery .image-holder:nth-child(5) {
-  height: 917px;
-}
-
-.gallery .image-holder:nth-child(6) {
-  height: 776px;
-}
-
-.gallery .image-holder:nth-child(7) {
-  height: 496px;
-  margin-top: 593px;
-}
-
-.gallery .image-holder:nth-child(8) {
-  height: 734px;
-}
-
-.gallery .image-holder:nth-child(9) {
-  height: 653px;
+  width: 100%;
 }
 
 .gallery .image-holder img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.gallery .image-holder:nth-child(1) {
+  margin-top: 321px;
+  width: 28.79vw;
+  height: 38vw;
+  order: 1;
+}
+
+.gallery .image-holder:nth-child(2) {
+  width: 35.97vw;
+  height: 44vw;
+  order: 4;
+}
+
+.gallery .image-holder:nth-child(3) {
+  margin-top: 223px;
+  width: 25.93vw;
+  height: 25.84vw;
+  order: 7;
+}
+
+.gallery .image-holder:nth-child(4) {
+  width: 28.79vw;
+  height: 28.79vw;
+  order: 2;
+}
+
+.gallery .image-holder:nth-child(5) {
+  width: 35.97vw;
+  height: 47.76vw;
+  order: 5;
+}
+
+.gallery .image-holder:nth-child(6) {
+  width: 25.93vw;
+  height: 38.23vw;
+  order: 8;
+}
+
+.gallery .image-holder:nth-child(7) {
+  width: 28.79vw;
+  height: 18.28vw;
+  order: 3;
+}
+
+.gallery .image-holder:nth-child(8) {
+  width: 35.97vw;
+  height: 40.416vw;
+  order: 6;
+}
+
+.gallery .image-holder:nth-child(9) {
+  width: 25.93vw;
+  height: 34vw;
+  order: 9;
+}
+
+/* --------footer----------- */
+.custom-footer {
+  padding-top: 390px;
 }
