@@ -83,8 +83,10 @@ export default function Home() {
           </header>
 
           <div className={`container ${styles["container"]}`}>
-            <div className={`row wrap ${styles["custom-gap"]}`}>
-              <article className={`row ${styles["work-item"]}`}>
+            <div className={`row wrap justify-center ${styles["custom-gap"]}`}>
+              <article
+                className={`row ${styles["work-item"]} ${styles["typical-item"]}`}
+              >
                 <div className={`${styles["col"]}`}>
                   <div className={styles["item-image-holder"]}>
                     <h3 className={styles["item-title"]}>Decoration Mirors</h3>

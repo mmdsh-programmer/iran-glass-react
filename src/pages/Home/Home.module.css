@@ -208,8 +208,8 @@
 }
 
 .work-item .item-image-holder {
-  width: 1000px;
-  height: 1000px;
+  width: clamp(500px, 52.1vw, 1000px);
+  height: clamp(500px, 52.1vw, 1000px);
   position: relative;
   overflow: hidden;
 }
@@ -218,11 +218,15 @@
   position: absolute;
   -webkit-text-stroke: 1px #37474f;
   font-family: NittiGrotesk;
-  font-size: 148px;
+  font-size: clamp(115px, 7.39vw, 148px);
   line-height: 0.82;
   color: rgba(33, 33, 33, 0);
   z-index: 3;
-  left: 1000px;
+  left: clamp(500px, 52.1vw, 1000px);
+}
+
+.work-item.typical-item .item-image-holder .item-title {
+  max-width: 652px;
 }
 
 .work-item.reverse .item-image-holder .item-title {
@@ -239,9 +243,9 @@
 
 .work-item .item-title {
   width: 890px;
-  margin: 168px 0 60px 0;
+  margin: 8.75vw 0 60px 0;
   font-family: NittiGrotesk;
-  font-size: 148px;
+  font-size: clamp(115px, 7.39vw, 148px);
   line-height: 0.82;
   color: var(--grey-lighten-3);
   position: relative;
@@ -249,17 +253,26 @@
   transform: translateX(-205px);
 }
 
+.works .work-item.typical-item .item-title {
+  max-width: 652px;
+}
+
 .work-item.reverse .item-title {
-  transform: translateX(340px);
+  transform: translateX(clamp(300px, 13.56vw, 356px));
 }
 
 .work-item .item-description {
   max-width: 500px;
-  margin: 60px 0 78px 65px;
+  margin: 60px 0 78px 3.39vw;
   font-family: NittiGrotesk-Light;
-  font-size: 28px;
+  font-size: clamp(20px, 1.45vw, 28px);
   line-height: 1.25;
   color: var(--grey-lighten-3);
+}
+
+.work-item.reverse .item-description {
+  margin-left: auto;
+  margin-right: 3.39vw;
 }
 
 .work-item .info-button {
