@@ -33,8 +33,8 @@
 .hero .background {
   width: 100%;
   height: 1837px;
-  border-top-left-radius: 1000px;
-  border-top-right-radius: 1000px;
+  border-top-left-radius: max(52.08vw);
+  border-top-right-radius: max(52.08vw);
   overflow: hidden;
   position: relative;
   z-index: -1;
@@ -174,7 +174,7 @@
 }
 
 .gallery .gallery-container {
-  height: 137.4vw;
+  height: min(137.4vw, 2685px);
   width: 100%;
   flex-direction: column;
   column-gap: 2.4vw;
@@ -193,57 +193,57 @@
 
 .gallery .image-holder:nth-child(1) {
   margin-top: 321px;
-  width: 28.79vw;
-  height: 38vw;
+  width: clamp(300px, 28.79vw, 552px);
+  height: min(38vw, 730px);
   order: 1;
 }
 
 .gallery .image-holder:nth-child(2) {
-  width: 35.97vw;
-  height: 44vw;
+  width: clamp(300px, 35.97vw, 691px);
+  height: min(44vw, 846px);
   order: 4;
 }
 
 .gallery .image-holder:nth-child(3) {
   margin-top: 223px;
-  width: 25.93vw;
-  height: 25.84vw;
+  width: clamp(300px, 25.93vw, 498px);
+  height: min(25.84vw, 496px);
   order: 7;
 }
 
 .gallery .image-holder:nth-child(4) {
-  width: 28.79vw;
-  height: 28.79vw;
+  width: clamp(300px, 28.79vw, 552px);
+  height: min(28.79vw, 552px);
   order: 2;
 }
 
 .gallery .image-holder:nth-child(5) {
-  width: 35.97vw;
-  height: 47.76vw;
+  width: clamp(300px, 35.97vw, 691px);
+  height: min(47.76vw, 917px);
   order: 5;
 }
 
 .gallery .image-holder:nth-child(6) {
-  width: 25.93vw;
-  height: 38.23vw;
+  width: clamp(300px, 25.93vw, 498px);
+  height: min(38.23vw, 734px);
   order: 8;
 }
 
 .gallery .image-holder:nth-child(7) {
-  width: 28.79vw;
-  height: 18.28vw;
+  width: clamp(300px, 28.79vw, 552px);
+  height: min(18.28vw, 351px);
   order: 3;
 }
 
 .gallery .image-holder:nth-child(8) {
-  width: 35.97vw;
-  height: 40.416vw;
+  width: clamp(300px, 35.97vw, 691px);
+  height: min(40.416vw, 776px);
   order: 6;
 }
 
 .gallery .image-holder:nth-child(9) {
-  width: 25.93vw;
-  height: 34vw;
+  width: clamp(300px, 25.93vw, 497px);
+  height: min(34vw, 653px);
   order: 9;
 }
 

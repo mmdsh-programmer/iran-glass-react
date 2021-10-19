@@ -177,8 +177,8 @@
 .works {
   margin: 250px 0 0;
   padding-top: 299px;
-  border-top-left-radius: 960px;
-  border-top-right-radius: 960px;
+  border-top-left-radius: max(50vw);
+  border-top-right-radius: max(50vw);
   border-top: solid 1px #979797;
   background-color: var(--grey-darken-3);
 }
