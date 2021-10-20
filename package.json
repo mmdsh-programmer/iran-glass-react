@@ -1,5 +1,6 @@
 {
-  "name": "iran-glass-react",
+  "name": "iran-glass",
+  "homepage": "https://atlaseurasia.com/iran-glass",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

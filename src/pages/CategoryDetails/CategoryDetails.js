@@ -21,7 +21,7 @@ export default function CategoryDetails() {
           <div className={styles["background"]}>
             <img
               className={styles["background-image"]}
-              src="images/category/hero-image.png"
+              src={process.env.PUBLIC_URL + "/images/category/hero-image.png"}
               alt="hero image"
             />
           </div>
@@ -98,7 +98,10 @@ export default function CategoryDetails() {
               <div className={styles["catalogue-data-image"]}>
                 <img
                   className={styles["image"]}
-                  src="images/category/product-image.png"
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/category/product-image.png"
+                  }
                   alt="product"
                   title="product image"
                 />
@@ -121,44 +124,70 @@ export default function CategoryDetails() {
             className={`container row wrap align-center ${styles["gallery-container"]}`}
           >
             <div className={styles["image-holder"]}>
-              <img src="images/home/image-2.png" alt="gallery-item-1" />
-            </div>
-            <div className={styles["image-holder"]}>
-              <img src="images/home/quote-image.png" alt="gallery-item-2" />
-            </div>
-            <div className={styles["image-holder"]}>
-              <img src="images/home/work-1.jpg" alt="gallery-item-3" />
-            </div>
-            <div className={styles["image-holder"]}>
-              <img src="images/home/work-2.jpg" alt="gallery-item-4" />
+              <img
+                src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
+                alt="gallery-item-1"
+              />
             </div>
             <div className={styles["image-holder"]}>
               <img
-                src="images/category/gallery-image-4.png"
+                src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
+                alt="gallery-item-2"
+              />
+            </div>
+            <div className={styles["image-holder"]}>
+              <img
+                src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
+                alt="gallery-item-3"
+              />
+            </div>
+            <div className={styles["image-holder"]}>
+              <img
+                src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
+                alt="gallery-item-4"
+              />
+            </div>
+            <div className={styles["image-holder"]}>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/category/gallery-image-4.png"
+                }
                 alt="gallery-item-5"
               />
             </div>
             <div className={styles["image-holder"]}>
               <img
-                src="images/category/gallery-image-2.png"
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/category/gallery-image-2.png"
+                }
                 alt="gallery-item-6"
               />
             </div>
             <div className={styles["image-holder"]}>
               <img
-                src="images/category/product-image.png"
+                src={
+                  process.env.PUBLIC_URL + "/images/category/product-image.png"
+                }
                 alt="gallery-item-7"
               />
             </div>
             <div className={styles["image-holder"]}>
               <img
-                src="images/category/gallery-image-1.png"
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/category/gallery-image-1.png"
+                }
                 alt="gallery-item-8"
               />
             </div>
             <div className={styles["image-holder"]}>
               <img
-                src="images/category/gallery-image-3.png"
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/category/gallery-image-3.png"
+                }
                 alt="gallery-item-9"
               />
             </div>

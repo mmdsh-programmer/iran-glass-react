@@ -22,7 +22,7 @@ export default function Home() {
               </h3>
               <img
                 className={styles["scroll-down"]}
-                src="images/home/scroll.svg"
+                src={process.env.PUBLIC_URL + "/images/home/scroll.svg"}
                 alt="scroll down"
               />
             </div>
@@ -30,7 +30,7 @@ export default function Home() {
               className={`${styles["hero-image-container"]} ${styles["first"]}`}
             >
               <img
-                src="images/home/image-1.png"
+                src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
                 alt="hero"
                 title="Iran Glass"
               />
@@ -39,7 +39,7 @@ export default function Home() {
               className={`${styles["hero-image-container"]} ${styles["second"]}`}
             >
               <img
-                src="images/home/image-2.png"
+                src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
                 alt="hero"
                 title="Iran Glass"
               />
@@ -67,7 +67,7 @@ export default function Home() {
           <div className={styles["quote-border"]}>
             <div className={styles["quote-image-holder"]}>
               <img
-                src="images/home/quote-image.png"
+                src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
                 alt="quote image"
                 title="quote image"
               />
@@ -92,7 +92,7 @@ export default function Home() {
                     <h3 className={styles["item-title"]}>Decoration Mirors</h3>
                     <img
                       className={styles["item-image"]}
-                      src="images/home/work-1.jpg"
+                      src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
                       alt="work 1"
                     />
                   </div>
@@ -124,7 +124,7 @@ export default function Home() {
                     </h3>
                     <img
                       className={styles["item-image"]}
-                      src="images/home/work-2.jpg"
+                      src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
                       alt="work 2"
                     />
                   </div>

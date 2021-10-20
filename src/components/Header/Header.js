@@ -7,29 +7,29 @@ export default function Header() {
     <header className={styles["main-header"]}>
       <div className={`container ${styles.container}`}>
         <div className="row">
-          <Link to="/" className={styles["header-logo"]}>
+          <Link to="/iran-glass" className={styles["header-logo"]}>
             IGT
           </Link>
 
           <nav className={styles["header-navbar"]}>
             <ul className={styles["header-menu"]}>
               <li className={styles["menu-item"]}>
-                <Link to="/" className={styles["menu-link"]}>
+                <Link to="/iran-glass" className={styles["menu-link"]}>
                   Home
                 </Link>
               </li>
               <li className={styles["menu-item"]}>
-                <Link to="/" className={styles["menu-link"]}>
+                <Link to="/category-details" className={styles["menu-link"]}>
                   Products
                 </Link>
               </li>
               <li className={styles["menu-item"]}>
-                <Link to="/" className={styles["menu-link"]}>
+                <Link to="/404" className={styles["menu-link"]}>
                   About
                 </Link>
               </li>
               <li className={styles["menu-item"]}>
-                <Link to="/" className={styles["menu-link"]}>
+                <Link to="/iran-glass" className={styles["menu-link"]}>
                   Contact
                 </Link>
               </li>
@@ -54,7 +54,10 @@ export default function Header() {
                   rel="noreferrer"
                 >
                   <img
-                    src="/images/social-icons/instagram.svg"
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/images/social-icons/instagram.svg"
+                    }
                     alt="instagram"
                     title="instagram"
                     className={styles["instagram"]}

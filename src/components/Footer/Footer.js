@@ -26,7 +26,9 @@ export default function Footer(props) {
               rel="noreferrer"
             >
               <img
-                src="images/home/instagram-sketched.svg"
+                src={
+                  process.env.PUBLIC_URL + "/images/home/instagram-sketched.svg"
+                }
                 alt="instagram"
                 title="instagram"
                 className={styles["instagram-icon"]}
@@ -119,7 +121,10 @@ export default function Footer(props) {
                   className={`${styles["menu-link"]} ${styles["instagram"]}`}
                 >
                   <img
-                    src="images/social-icons/instagram.svg"
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/images/social-icons/instagram.svg"
+                    }
                     alt="instagram"
                     title="instagram"
                   />

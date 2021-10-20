@@ -11,7 +11,9 @@ export default function ProductView() {
           </header>
           <a href="#" className={styles["close-button"]}>
             <img
-              src="images/product-view/close-button.svg"
+              src={
+                process.env.PUBLIC_URL + "/images/product-view/close-button.svg"
+              }
               alt="close button"
             />
           </a>
@@ -56,7 +58,9 @@ export default function ProductView() {
           <div className={`row ${styles["product-navigations"]}`}>
             <a href="#" className={styles["navigator"]}>
               <img
-                src="images/product-view/left-arrow.svg"
+                src={
+                  process.env.PUBLIC_URL + "/images/product-view/left-arrow.svg"
+                }
                 alt="prev"
                 className={`${styles["left"]} ${styles["navigator-icon"]}`}
               />
@@ -65,7 +69,10 @@ export default function ProductView() {
             <a href="#" className={styles["navigator"]}>
               <span className={styles["navigator-text"]}>NEXT PRODUCT</span>
               <img
-                src="images/product-view/right-arrow.svg"
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/product-view/right-arrow.svg"
+                }
                 alt="next"
                 className={`${styles["right"]} ${styles["navigator-icon"]}`}
               />
@@ -74,11 +81,27 @@ export default function ProductView() {
         </div>
 
         <div className={`row ${styles["product-images"]}`}>
-          <img src="images/product-view/product-image.png" alt="product 1" />
+          <img
+            src={
+              process.env.PUBLIC_URL + "/images/product-view/product-image.png"
+            }
+            alt="product 1"
+          />
 
-          <img src="images/product-view/product-image-2.png" alt="product 2" />
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              "/images/product-view/product-image-2.png"
+            }
+            alt="product 2"
+          />
 
-          <img src="images/product-view/product-image.png" alt="product 1" />
+          <img
+            src={
+              process.env.PUBLIC_URL + "/images/product-view/product-image.png"
+            }
+            alt="product 1"
+          />
         </div>
       </div>
     </section>
