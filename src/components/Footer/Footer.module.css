@@ -124,19 +124,19 @@
 }
 
 .contact .contact-title {
-  font-size: 34px;
+  font-size: clamp(25px, 1.77vw, 34px);
   margin-bottom: 15px;
 }
 
 .contact .contact-email {
   margin-bottom: 53px;
-  font-size: 60px;
+  font-size: clamp(45px, 3.125vw, 53px);
   text-decoration: none;
   width: fit-content;
 }
 
 .contact .follow-instagram {
-  font-size: 40px;
+  font-size: clamp(32px, 2.08vw, 40px);
 }
 
 .follow-instagram .instagram-link {

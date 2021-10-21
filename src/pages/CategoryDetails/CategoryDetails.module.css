@@ -11,7 +11,7 @@
 
 .hero .category-header .header-title {
   font-family: SaolDisplay;
-  font-size: 154px;
+  font-size: clamp(100px, 8.02vw, 154px);
   color: var(--white);
   text-align: center;
 }
@@ -25,14 +25,14 @@
 }
 
 .hero .category-header .header-subtitle {
-  max-width: 945px;
-  font-size: 43px;
+  width: min(49.2vw, 945px);
+  font-size: clamp(28px, 2.24vw, 43px);
   margin: 34px auto 0 auto;
 }
 
 .hero .background {
   width: 100%;
-  height: 1837px;
+  height: min(95.68vw, 1837px);
   border-top-left-radius: max(52.08vw);
   border-top-right-radius: max(52.08vw);
   overflow: hidden;
@@ -48,9 +48,9 @@
 }
 
 .hero .description {
-  max-width: 1210px;
-  font-size: 43px;
-  margin: 260px auto 0 auto;
+  width: min(63.02vw, 1210px);
+  font-size: clamp(28px, 2.24vw, 43px);
+  margin: min(13.54vw, 260px) auto 0 auto;
 }
 
 /* --------catalogue----------- */
@@ -65,7 +65,7 @@
 
 .catalogue .catalogue-counter .counter-title {
   font-family: NittiGrotesk-Light;
-  font-size: 43px;
+  font-size: clamp(28px, 2.24vw, 43px);
   color: var(--white);
 }
 
@@ -76,7 +76,7 @@
 
 .catalogue .catalogue-counter .counter-number {
   font-family: SaolDisplay;
-  font-size: 124px;
+  font-size: clamp(85px, 6.46vw, 124px);
   color: var(--white);
   line-height: 114px;
 }
@@ -94,13 +94,13 @@
 }
 
 .catalogue .catalogue-data {
-  margin-top: 268px;
+  margin-top: min(13.95vw, 268px);
 }
 
 .catalogue-data .title {
   margin: 0 0 4px 0;
   font-family: SaolDisplay;
-  font-size: 98px;
+  font-size: clamp(70px, 5.1vw, 98px);
   color: var(--grey-darken-3);
 }
 
@@ -115,10 +115,10 @@
 }
 
 .catalogue-data .catalogue-data-description {
-  max-width: 758px;
+  width: min(39.47vw, 758px);
   margin: 13px 390px 0 70px;
   font-family: NittiGrotesk-Light;
-  font-size: 28px;
+  font-size: clamp(20px, 1.45vw, 28px);
   line-height: 1.25;
   color: var(--white);
 }
@@ -136,19 +136,20 @@
 }
 
 .catalogue-data .view-products::before {
-  top: -16px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* --------quote----------- */
 
 .category-body .quote {
-  margin-top: 411px;
+  margin-top: min(21.4vw, 411px);
 }
 
 .quote .quote-text {
-  max-width: 1622px;
+  width: min(84.48vw, 1622px);
   font-family: SaolDisplay;
-  font-size: 84px;
+  font-size: min(4.37vw, 84px);
   text-align: center;
   margin: 0 auto;
   color: var(--white);
@@ -170,7 +171,7 @@
 /* --------gallery----------- */
 
 .gallery {
-  margin-top: 370px;
+  margin-top: min(19.27vw, 370px);
 }
 
 .gallery .gallery-container {
