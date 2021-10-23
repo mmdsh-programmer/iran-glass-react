@@ -50,8 +50,11 @@
 }
 
 .product-navigations .navigator {
-  text-decoration: none;
+  display: flex;
+  border: none;
+  background-color: transparent;
   margin: 59px 0 76px 0;
+  cursor: pointer;
 }
 
 .product-navigations .navigator:first-child {
@@ -84,6 +87,7 @@
   column-gap: 30px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-images img {

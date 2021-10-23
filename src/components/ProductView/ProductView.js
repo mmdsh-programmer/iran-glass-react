@@ -56,7 +56,7 @@ export default function ProductView() {
           </div>
 
           <div className={`row ${styles["product-navigations"]}`}>
-            <a href="#" className={styles["navigator"]}>
+            <button className={styles["navigator"]}>
               <img
                 src={
                   process.env.PUBLIC_URL + "/images/product-view/left-arrow.svg"
@@ -65,8 +65,8 @@ export default function ProductView() {
                 className={`${styles["left"]} ${styles["navigator-icon"]}`}
               />
               <span className={styles["navigator-text"]}>PREV PRODUCT</span>
-            </a>
-            <a href="#" className={styles["navigator"]}>
+            </button>
+            <button className={styles["navigator"]}>
               <span className={styles["navigator-text"]}>NEXT PRODUCT</span>
               <img
                 src={
@@ -76,7 +76,7 @@ export default function ProductView() {
                 alt="next"
                 className={`${styles["right"]} ${styles["navigator-icon"]}`}
               />
-            </a>
+            </button>
           </div>
         </div>
 
