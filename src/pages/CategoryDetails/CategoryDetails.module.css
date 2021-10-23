@@ -135,11 +135,6 @@
   object-fit: cover;
 }
 
-.catalogue-data .view-products::before {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 /* --------quote----------- */
 
 .category-body .quote {
