@@ -121,6 +121,7 @@ export default function Footer(props) {
                   className={`${styles["menu-link"]} ${styles["instagram"]}`}
                 >
                   <img
+                    className={styles["instagram-icon"]}
                     src={
                       process.env.PUBLIC_URL +
                       "/images/social-icons/instagram.svg"
