@@ -7,14 +7,20 @@ export default function Header() {
     <header className={styles["main-header"]}>
       <div className={`container ${styles.container}`}>
         <div className="row">
-          <Link to="/iran-glass" className={styles["header-logo"]}>
+          <a href="#" className={styles["header-menu-icon"]}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+
+          <Link to="/" className={styles["header-logo"]}>
             IGT
           </Link>
 
           <nav className={styles["header-navbar"]}>
             <ul className={styles["header-menu"]}>
               <li className={styles["menu-item"]}>
-                <Link to="/iran-glass" className={styles["menu-link"]}>
+                <Link to="/" className={styles["menu-link"]}>
                   Home
                 </Link>
               </li>
@@ -29,7 +35,7 @@ export default function Header() {
                 </Link>
               </li>
               <li className={styles["menu-item"]}>
-                <Link to="/iran-glass" className={styles["menu-link"]}>
+                <Link to="/" className={styles["menu-link"]}>
                   Contact
                 </Link>
               </li>

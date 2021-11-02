@@ -10,7 +10,7 @@ export default function App() {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/iran-glass" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/category-details" component={CategoryDetails} />
         <Route component={() => <NotFound />} />
       </Switch>

@@ -15,6 +15,23 @@
   border-bottom: 1px solid var(--white);
 }
 
+.header-menu-icon {
+  display: none;
+  flex-direction: column;
+  width: 25px;
+  height: 16px;
+  margin-top: 26px;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
+.header-menu-icon span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  color: var(--white);
+}
+
 .header-logo {
   font-family: SaolDisplay, Arial, Helvetica, sans-serif;
   font-size: 30px;
@@ -62,4 +79,27 @@
 .header-utilities .header-utilities-menu {
   display: flex;
   align-items: center;
+}
+
+/* --------------responsive------------ */
+
+@media screen and (max-width: 1850px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-navbar {
+    display: none;
+  }
+
+  .header-menu-icon {
+    display: flex;
+  }
+
+  .header-utilities {
+    margin-left: auto;
+  }
 }
