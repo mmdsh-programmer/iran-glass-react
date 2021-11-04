@@ -127,13 +127,13 @@
 }
 
 .contact .contact-title {
-  font-size: clamp(25px, 1.77vw, 34px);
+  font-size: clamp(26px, 1.77vw, 34px);
   margin-bottom: 15px;
 }
 
 .contact .contact-email {
   margin-bottom: 53px;
-  font-size: clamp(45px, 3.125vw, 53px);
+  font-size: clamp(40px, 3.125vw, 53px);
   text-decoration: none;
   width: fit-content;
 }
@@ -153,4 +153,103 @@
   height: 30px;
   vertical-align: middle;
   margin: 0 9px 5px 12px;
+}
+
+@media screen and (max-width: 1850px) {
+  .main-footer .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 575px) {
+  .subscribe dt {
+    font-size: 38px;
+  }
+
+  .subscribe dd {
+    font-family: NittiGrotesk-Light;
+    font-size: 26px;
+  }
+
+  .contact .follow-instagram {
+    font-size: 25px;
+  }
+
+  .follow-instagram .instagram-link .instagram-icon {
+    width: 20px;
+    height: 20px;
+    margin: 3px 5px 5px 6px;
+  }
+
+  .follow-instagram .instagram-link {
+    font-family: NittiGrotesk-Light;
+  }
+
+  .contact {
+    padding-bottom: 192px;
+    max-width: 984px;
+  }
+
+  .main-footer .footer-info-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .main-footer .footer-info-address,
+  .main-footer .footer-info-postcode {
+    font-size: 24px;
+  }
+
+  .main-footer .menu-item {
+    width: auto;
+    max-width: unset;
+  }
+
+  .no-title .menu-item:first-child {
+    margin-top: 15px;
+  }
+
+  .main-footer [class*="col-"] {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  .main-footer [class*="col-"]:first-child {
+    margin-bottom: 0;
+  }
+
+  .main-footer [class*="col-"]:last-child {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--grey-darken-2);
+  }
+
+  .main-footer .menu-link {
+    font-size: 24px;
+  }
+
+  .footer-copyright-menu .menu-item {
+    margin: 0 134px 27px 0;
+  }
+
+  .footer-copyright-menu .menu-item .menu-link {
+    text-transform: none;
+  }
+
+  .footer-copyright .copyright-link-container {
+    margin-top: 50px;
+  }
+
+  .footer-copyright .copyright-link:first-child {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .contact .contact-email {
+    font-size: 30px;
+  }
 }

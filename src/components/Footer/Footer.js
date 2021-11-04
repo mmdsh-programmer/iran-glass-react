@@ -8,7 +8,7 @@ export default function Footer(props) {
   const customFooter = classNames(styles["main-footer"], classes);
   return (
     <footer className={customFooter}>
-      <div className={`container`}>
+      <div className={`container ${styles["container"]}`}>
         <div className={`row flex-column ${styles["contact"]}`}>
           <h4 className={styles["contact-title"]}>Simply contact us via</h4>
           <a
@@ -138,7 +138,7 @@ export default function Footer(props) {
 
         <div className={`row wrap ${styles["footer-copyright"]}`}>
           <nav className={styles["footer-copyright-navbar"]}>
-            <ul className={styles["footer-copyright-menu"]}>
+            <ul className={`${styles["footer-copyright-menu"]} wrap`}>
               <li className={styles["menu-item"]}>
                 <Link to="/" className={styles["menu-link"]}>
                   Home
@@ -156,10 +156,22 @@ export default function Footer(props) {
               </li>
             </ul>
           </nav>
+          <div
+            className={`${styles["copyright-link-container"]} row flex-column`}
+          >
+            <Link to="/" className={styles["copyright-link"]}>
+              2021 © All right reserved to IGT Co
+            </Link>
 
-          <Link to="/" className={styles["copyright-link"]}>
-            2021 © All right reserved to IGT Co
-          </Link>
+            <a
+              href="https://wearecolorz.com"
+              target="_blank"
+              rel="noopener"
+              className={styles["copyright-link"]}
+            >
+              Design & development by Colorz.
+            </a>
+          </div>
         </div>
       </div>
     </footer>
