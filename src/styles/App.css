@@ -248,3 +248,13 @@ body {
 .align-end {
   align-items: flex-end;
 }
+
+@media screen and (max-width: 575px) {
+  .d-mobile-none {
+    display: none;
+  }
+
+  .d-mobile-flex {
+    display: flex;
+  }
+}

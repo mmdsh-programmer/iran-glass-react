@@ -82,14 +82,22 @@ export default function Home() {
             </h2>
           </header>
 
-          <div className={`container ${styles["container"]}`}>
-            <div className={`row wrap justify-center ${styles["custom-gap"]}`}>
+          <div
+            className={`container ${styles["container"]} ${styles["works-container"]}`}
+          >
+            <div
+              className={`row wrap justify-center ${styles["custom-gap"]} ${styles["mobile-column"]}`}
+            >
               <article
                 className={`row ${styles["work-item"]} ${styles["typical-item"]}`}
               >
-                <div className={`${styles["col"]}`}>
-                  <div className={styles["item-image-holder"]}>
-                    <h3 className={styles["item-title"]}>Decoration Mirors</h3>
+                <div className={`${styles["col"]} ${styles["image-col"]}`}>
+                  <div
+                    className={`${styles["item-image-holder"]} d-mobile-flex`}
+                  >
+                    <h3 className={`${styles["item-title"]} d-mobile-none`}>
+                      Decoration Mirors
+                    </h3>
                     <img
                       className={styles["item-image"]}
                       src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
@@ -116,10 +124,12 @@ export default function Home() {
                 className={`row ${styles["work-item"]} ${styles["reverse"]}`}
               >
                 <div
-                  className={`${styles["order-desktop-2"]} ${styles["col"]}`}
+                  className={`${styles["order-desktop-2"]} ${styles["col"]} ${styles["image-col"]}`}
                 >
-                  <div className={styles["item-image-holder"]}>
-                    <h3 className={styles["item-title"]}>
+                  <div
+                    className={`${styles["item-image-holder"]} d-mobile-flex`}
+                  >
+                    <h3 className={`${styles["item-title"]} d-mobile-none`}>
                       Smart Monitor Mirors
                     </h3>
                     <img
