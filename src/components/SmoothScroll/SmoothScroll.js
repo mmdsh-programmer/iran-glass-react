@@ -8,8 +8,6 @@ export default function SmoothScroll() {
 
     Scrollbar.init(document.body, {
       damping: 0.03,
-      renderByPixels: false,
-      continuousScrolling: false,
       plugins: {
         overscroll: false,
       },
