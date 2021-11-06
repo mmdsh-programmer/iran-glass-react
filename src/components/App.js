@@ -4,16 +4,19 @@ import { Header } from "./Header";
 import { Home } from "pages/Home";
 import { NotFound } from "pages/NotFound";
 import { CategoryDetails } from "pages/CategoryDetails";
+import { SmoothScroll } from "./SmoothScroll";
 
 export default function App() {
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/category-details" component={CategoryDetails} />
-        <Route component={() => <NotFound />} />
-      </Switch>
+      <SmoothScroll>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/category-details" component={CategoryDetails} />
+          <Route component={NotFound} />
+        </Switch>
+      </SmoothScroll>
     </Router>
   );
 }

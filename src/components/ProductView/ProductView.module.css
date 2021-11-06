@@ -4,6 +4,7 @@
   position: relative;
   z-index: 100;
   padding: 40px 0;
+  height: 100vh;
 }
 
 .product-view-title .product-title {
@@ -91,7 +92,7 @@
 }
 
 .product-images img {
-  height: 41.77vw;
+  height: 35vw;
   width: auto;
   scroll-snap-align: start;
 }
