@@ -1,45 +1,55 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
 import styles from "./SmoothScroll.module.css";
-import { TweenLite, Power2 } from "gsap";
-// import CustomEase from "gsap/CustomEase";
+import useWindowSize from "../../hooks/useWindowSize";
 
-export default function SmoothScroll({ children }) {
-  const viewport = useRef();
-  const fakeRef = useRef();
-  const [height, setHeight] = useState(window.innerHeight);
+const SmoothScroll = ({ children }) => {
+  // 1.
+  const windowSize = useWindowSize();
 
-  const ro = new ResizeObserver((elements) => {
-    for (let elem of elements) {
-      const crx = elem.contentRect;
-      setHeight(crx.height);
-    }
-  });
+  //2.
+  const scrollingContainerRef = useRef();
 
-  const onScroll = (e) => {
-    TweenLite.to(viewport.current, 3, {
-      y: -window.pageYOffset,
-      ease: Power2.easeOut,
-    });
+  // 3.
+  const data = {
+    ease: 0.03,
+    current: 0,
+    previous: 0,
+    rounded: 0,
   };
 
+  // 4.
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    ro.observe(viewport.current);
+    setBodyHeight();
+  }, [windowSize.height]);
 
-    return () => window.removeEventListener("scroll", onScroll);
+  const setBodyHeight = () => {
+    document.body.style.height = `${
+      scrollingContainerRef.current.getBoundingClientRect().height
+    }px`;
+  };
+
+  // 5.
+  useEffect(() => {
+    requestAnimationFrame(() => smoothScrollingHandler());
   }, []);
 
+  const smoothScrollingHandler = () => {
+    data.current = window.scrollY;
+    data.previous += (data.current - data.previous) * data.ease;
+    data.rounded = Math.round(data.previous * 100) / 100;
+
+    scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
+
+    // Recursive call
+    requestAnimationFrame(() => smoothScrollingHandler());
+  };
+
   return (
-    <>
-      <div className={styles["viewport"]} ref={viewport}>
-        {children}
-      </div>
-      <div
-        ref={fakeRef}
-        style={{
-          height: height,
-        }}
-      ></div>
-    </>
+    <div className={styles["parent"]}>
+      <div ref={scrollingContainerRef}>{children}</div>
+    </div>
   );
-}
+};
+
+export default SmoothScroll;
