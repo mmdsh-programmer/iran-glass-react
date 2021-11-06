@@ -1,55 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import Scrollbar from "smooth-scrollbar";
+import { useEffect } from "react";
+import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
-import styles from "./SmoothScroll.module.css";
-import useWindowSize from "../../hooks/useWindowSize";
-
-const SmoothScroll = ({ children }) => {
-  // 1.
-  const windowSize = useWindowSize();
-
-  //2.
-  const scrollingContainerRef = useRef();
-
-  // 3.
-  const data = {
-    ease: 0.03,
-    current: 0,
-    previous: 0,
-    rounded: 0,
-  };
-
-  // 4.
+export default function SmoothScroll() {
   useEffect(() => {
-    setBodyHeight();
-  }, [windowSize.height]);
+    Scrollbar.use(OverscrollPlugin);
 
-  const setBodyHeight = () => {
-    document.body.style.height = `${
-      scrollingContainerRef.current.getBoundingClientRect().height
-    }px`;
-  };
+    Scrollbar.init(document.body, {
+      damping: 0.03,
+      renderByPixels: false,
+      continuousScrolling: false,
+      plugins: {
+        overscroll: false,
+      },
+    });
 
-  // 5.
-  useEffect(() => {
-    requestAnimationFrame(() => smoothScrollingHandler());
+    return () => {
+      if (Scrollbar) Scrollbar.destroy(document.body);
+    };
   }, []);
 
-  const smoothScrollingHandler = () => {
-    data.current = window.scrollY;
-    data.previous += (data.current - data.previous) * data.ease;
-    data.rounded = Math.round(data.previous * 100) / 100;
-
-    scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
-
-    // Recursive call
-    requestAnimationFrame(() => smoothScrollingHandler());
-  };
-
-  return (
-    <div className={styles["parent"]}>
-      <div ref={scrollingContainerRef}>{children}</div>
-    </div>
-  );
-};
-
-export default SmoothScroll;
+  return null;
+}
