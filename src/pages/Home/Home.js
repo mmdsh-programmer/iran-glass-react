@@ -56,7 +56,7 @@ export default function Home(props) {
       ease: Power4.easeOut,
       duration: 1,
       delay: 0.3,
-      y: 650,
+      y: 700,
       skewY: "10deg",
       stagger: {
         amount: 0.3,
@@ -87,13 +87,21 @@ export default function Home(props) {
           <div className={styles["background"]}></div>
           <div className={`container grid ${styles["container"]}`}>
             <h1
-              className={`${styles["hero-title"]} ${styles["main-title"]} horizontal-move`}
+              className={`${styles["hero-title"]} ${styles["main-title"]}`}
               ref={mainTitleRef}
-              data-speed="-0.5"
             >
-              <span className="block">Iran</span>
-              <span className="block">Glass</span>
-              <span className={`block ${styles["ml-custom"]}`}>Technology</span>
+              <span className="block horizontal-move" data-speed="-0.04">
+                Iran
+              </span>
+              <span className="block horizontal-move" data-speed="-0.08">
+                Glass
+              </span>
+              <span
+                className={`block ${styles["ml-custom"]} horizontal-move`}
+                data-speed="-0.12"
+              >
+                Technology
+              </span>
             </h1>
             <div className={styles["hero-subtitle-container"]}>
               <h3 className={styles["hero-subtitle"]} ref={subTitleRef}>
@@ -145,11 +153,11 @@ export default function Home(props) {
         </section>
 
         <section className={styles["quote"]}>
-          <blockquote cite="#" className={styles["quote-text"]}>
+          <blockquote cite="#" className={`${styles["quote-text"]}`}>
             Modern design is about realigning your priorities to help keep you
             focused on the important things in life
           </blockquote>
-          <div className={styles["quote-border"]}>
+          <div className={`${styles["quote-border"]}`}>
             <div className={styles["quote-image-holder"]}>
               <img
                 src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
@@ -162,7 +170,9 @@ export default function Home(props) {
 
         <section className={styles["works"]}>
           <header className={styles["works-header-holder"]}>
-            <h2 className={styles["works-header"]}>
+            <h2
+              className={`${styles["works-header"]}`}
+            >
               We are producer of decoration & smart mirors
             </h2>
           </header>

@@ -37,7 +37,7 @@ export default function SmoothScroll({ children }) {
   });
 
   const onScroll = () => {
-    TweenLite.to(viewportRef.current, 1, {
+    TweenLite.to(viewportRef.current, 3, {
       y: -window.pageYOffset,
       ease: Power1.easeOut,
     });
