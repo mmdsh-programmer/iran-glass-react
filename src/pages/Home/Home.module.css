@@ -18,7 +18,7 @@
 
 .hero .container {
   grid-template-columns: repeat(8, auto);
-  grid-template-rows: clamp(200px, 23.96vw, 460px) clamp(220px, 31.25vw, 600px) auto;
+  grid-template-rows: clamp(220px, 25.96vw, 480px) clamp(220px, 31.25vw, 600px) auto;
 }
 
 .hero .hero-title.main-title {
@@ -26,6 +26,8 @@
   grid-row: 1/2;
   line-height: clamp(7.39vw, 140px);
   max-width: 383px;
+  opacity: 1;
+  overflow-y: clip;
 }
 
 .hero .hero-title {
@@ -53,6 +55,7 @@
   color: var(--hero-text);
   margin-left: clamp(50px, 21vw, 407px);
   margin-top: clamp(40px, 4.2vw, 80px);
+  overflow-y: clip;
 }
 
 .hero .scroll-down {
@@ -83,6 +86,26 @@
   left: 97px;
 }
 
+.hero .hero-image-container {
+  /* -webkit-mask-image: radial-gradient(#fff, #000);
+  mask-image: radial-gradient(#fff, #000); */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .hero-image-container .inner-image-container {
+  /* background: #000; */
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  /* -webkit-mask-image: radial-gradient(#fff, #000);
+  mask-image: radial-gradient(#fff, #000); */
+}
+
 .hero .hero-image-container.first {
   width: clamp(300px, 42.19vw, 810px);
   height: clamp(400px, 55.62vw, 1068px);
@@ -93,7 +116,6 @@
   -moz-border-radius: 400px 400px 0px 0px;
   -webkit-border-radius: 400px 400px 0px 0px;
   border-radius: 400px 400px 0px 0px;
-  overflow: hidden;
 }
 
 .hero .hero-image-container.second {
@@ -111,6 +133,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 1;
+  scale: 0;
 }
 
 /* --------quote----------- */
@@ -372,6 +396,10 @@
 
   .hero .hero-title.main-title {
     margin-left: 20px;
+  }
+
+  .hero .hero-title.main-title span {
+    line-height: initial;
   }
 
   .hero .hero-subtitle {

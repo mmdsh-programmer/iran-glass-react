@@ -1,22 +1,102 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
+import { gsap, Power4 } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-export default function Home() {
+export default function Home(props) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  //refs
+  const mainTitleRef = useRef(null);
+  const subTitleRef = useRef(null);
+  const scrollDownRef = useRef(null);
+
+  //text animation functions
+  const animateText = (ref, options) => {
+    gsap.from(ref, 1.8, options);
+  };
+
+  //scroll down animation functions
+  const animateScrollDown = () => {
+    let tween = gsap.fromTo(
+      scrollDownRef.current,
+      { rotation: 0 },
+      {
+        rotation: 360,
+        duration: 9,
+        repeat: -1,
+        ease: "linear",
+      }
+    );
+  };
+
+  //move texts on scroll
+  function moveTextOnScroll() {
+    const moveTextAnim = gsap.timeline({
+      defaults: { ease: "powe4.out" },
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        scrub: 1.5,
+      },
+    });
+
+    gsap.utils.toArray(".horizontal-move").forEach((layer) => {
+      const speed = layer.dataset.speed;
+      const movement = -(layer.offsetWidth * speed);
+      moveTextAnim.to(layer, { x: movement }, 0);
+    });
+  }
+
+  useEffect(() => {
+    //run main title animation
+    animateText(mainTitleRef.current.children, {
+      ease: Power4.easeOut,
+      duration: 1,
+      delay: 0.3,
+      y: 650,
+      skewY: "10deg",
+      stagger: {
+        amount: 0.3,
+      },
+    });
+
+    //run subtitle animations
+    animateText(subTitleRef.current.children, {
+      ease: Power4.easeOut,
+      delay: 1.2,
+      y: 500,
+      skewY: "10deg",
+      stagger: {
+        amount: 0.3,
+      },
+    });
+
+    //run scroll down animations
+    animateScrollDown();
+
+    //move text on scroll run
+    moveTextOnScroll();
+  }, []);
   return (
     <>
       <main className={styles["main-body"]}>
         <section className={styles["hero"]}>
           <div className={styles["background"]}></div>
           <div className={`container grid ${styles["container"]}`}>
-            <h1 className={`${styles["hero-title"]} ${styles["main-title"]}`}>
+            <h1
+              className={`${styles["hero-title"]} ${styles["main-title"]} horizontal-move`}
+              ref={mainTitleRef}
+              data-speed="-0.5"
+            >
               <span className="block">Iran</span>
               <span className="block">Glass</span>
               <span className={`block ${styles["ml-custom"]}`}>Technology</span>
             </h1>
             <div className={styles["hero-subtitle-container"]}>
-              <h3 className={styles["hero-subtitle"]}>
+              <h3 className={styles["hero-subtitle"]} ref={subTitleRef}>
                 <span className="block">Decoration</span>
                 <span className="block">& Smart Mirors</span>
               </h3>
@@ -24,26 +104,31 @@ export default function Home() {
                 className={styles["scroll-down"]}
                 src={process.env.PUBLIC_URL + "/images/home/scroll.svg"}
                 alt="scroll down"
+                ref={scrollDownRef}
               />
             </div>
-            <div
+            <figure
               className={`${styles["hero-image-container"]} ${styles["first"]}`}
             >
-              <img
-                src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
-                alt="hero"
-                title="Iran Glass"
-              />
-            </div>
-            <div
+              <picture className={styles["inner-image-container"]}>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
+                  alt="hero"
+                  title="Iran Glass"
+                />
+              </picture>
+            </figure>
+            <figure
               className={`${styles["hero-image-container"]} ${styles["second"]}`}
             >
-              <img
-                src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
-                alt="hero"
-                title="Iran Glass"
-              />
-            </div>
+              <picture className={styles["inner-image-container"]}>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
+                  alt="hero"
+                  title="Iran Glass"
+                />
+              </picture>
+            </figure>
             <div className={styles["hero-description-container"]}>
               <p className={styles["hero-description"]}>
                 Iran Glass Technology with more than 40 years of experience and
