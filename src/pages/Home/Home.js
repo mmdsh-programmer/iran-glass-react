@@ -54,6 +54,7 @@ export default function Home(props) {
     });
   };
 
+  //reveal texts on scroll
   const textMaskReveal = (ref, stagger = 0, start = "top bottom") => {
     new SplitType(ref, {
       types: "lines",
@@ -108,7 +109,7 @@ export default function Home(props) {
 
     //run text reveal mask animation
     textMaskReveal(descriptionRef.current, 0.04, "top center");
-    textMaskReveal(quoteRef.current, 0.08, "top bottom");
+    textMaskReveal(quoteRef.current, 0.08, "top center");
   }, []);
   return (
     <>
