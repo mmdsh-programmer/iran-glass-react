@@ -84,8 +84,8 @@
 }
 
 .hero .more-button {
-  top: 75px;
-  left: 97px;
+  left: 76px;
+  top: 55px;
 }
 
 .hero .hero-image-container {
@@ -299,7 +299,7 @@
 }
 
 .work-item .info-button {
-  margin-left: 139px;
+  margin-left: 110px;
 }
 
 .work-item .col:nth-child(2) {
@@ -446,6 +446,7 @@
 
   .quote .quote-text {
     font-size: 54px;
+    opacity: 0;
   }
 
   .quote .quote-text::before {

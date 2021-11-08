@@ -5,11 +5,12 @@
   font-size: 20px;
   line-height: 1.75;
   text-transform: uppercase;
-  position: relative;
+  position: absolute;
+  white-space: nowrap;
+  margin-left: 17px;
 }
 
-.hero-link::before {
-  content: "";
+.circle {
   position: absolute;
   width: 69px;
   height: 69px;
@@ -18,5 +19,4 @@
   /* top: max(-21px, -1.2vw); */
   top: 50%;
   transform: translateY(-50%);
-  left: -19px;
 }

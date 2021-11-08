@@ -4,14 +4,18 @@ import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
 import { gsap, Power4 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitType from "split-type";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
 
 export default function Home(props) {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
   //refs
   const mainTitleRef = useRef(null);
   const subTitleRef = useRef(null);
   const scrollDownRef = useRef(null);
+  const quoteRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -33,7 +37,7 @@ export default function Home(props) {
   };
 
   //move texts on scroll
-  function moveTextOnScroll() {
+  const moveTextOnScroll = () => {
     const moveTextAnim = gsap.timeline({
       defaults: { ease: "powe4.out" },
       scrollTrigger: {
@@ -48,7 +52,29 @@ export default function Home(props) {
       const movement = -(layer.offsetWidth * speed);
       moveTextAnim.to(layer, { x: movement }, 0);
     });
-  }
+  };
+
+  const textMaskReveal = (ref, stagger = 0, start = "top bottom") => {
+    new SplitType(ref, {
+      types: "lines",
+      linesClass: "split-child",
+    });
+
+    new SplitType(ref, {
+      linesClass: "split-parent",
+    });
+
+    gsap.from(".word", {
+      scrollTrigger: {
+        trigger: ref,
+        start: start,
+      },
+      duration: 1,
+      y: 200,
+      ease: "power4",
+      stagger: stagger,
+    });
+  };
 
   useEffect(() => {
     //run main title animation
@@ -77,8 +103,12 @@ export default function Home(props) {
     //run scroll down animations
     animateScrollDown();
 
-    //move text on scroll run
+    //run move text on scroll
     moveTextOnScroll();
+
+    //run text reveal mask animation
+    textMaskReveal(descriptionRef.current, 0.04, "top center");
+    textMaskReveal(quoteRef.current, 0.08, "top bottom");
   }, []);
   return (
     <>
@@ -138,14 +168,14 @@ export default function Home(props) {
               </picture>
             </figure>
             <div className={styles["hero-description-container"]}>
-              <p className={styles["hero-description"]}>
+              <p className={styles["hero-description"]} ref={descriptionRef}>
                 Iran Glass Technology with more than 40 years of experience and
                 with the aim of meeting the needs of customers and improving the
                 quality of products since 2001 has changed its name and created
                 the Iranian glass technology brand (with the brand name Gilda
                 Glass)
               </p>
-              <MoreButton to="/" className={styles["more-button"]}>
+              <MoreButton to="/" className={`${styles["more-button"]} content`}>
                 More about us
               </MoreButton>
             </div>
@@ -153,7 +183,11 @@ export default function Home(props) {
         </section>
 
         <section className={styles["quote"]}>
-          <blockquote cite="#" className={`${styles["quote-text"]}`}>
+          <blockquote
+            cite="#"
+            className={`${styles["quote-text"]}`}
+            ref={quoteRef}
+          >
             Modern design is about realigning your priorities to help keep you
             focused on the important things in life
           </blockquote>
@@ -170,9 +204,7 @@ export default function Home(props) {
 
         <section className={styles["works"]}>
           <header className={styles["works-header-holder"]}>
-            <h2
-              className={`${styles["works-header"]}`}
-            >
+            <h2 className={`${styles["works-header"]}`}>
               We are producer of decoration & smart mirors
             </h2>
           </header>

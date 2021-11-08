@@ -251,6 +251,19 @@ body {
   align-items: flex-end;
 }
 
+.button-container {
+  display: flex;
+  position: relative;
+  height: 85px;
+  width: 200px;
+  align-items: center;
+}
+
+.line {
+  overflow: hidden;
+  line-height: initial;
+}
+
 @media screen and (max-width: 575px) {
   .d-mobile-none {
     display: none;
