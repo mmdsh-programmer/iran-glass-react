@@ -223,8 +223,8 @@ export default function Home(props) {
             <div className={styles["quote-image-holder"]}>
               <img
                 src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
-                alt="quote image"
-                title="quote image"
+                alt="quote"
+                title="quote"
               />
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function Home(props) {
                   >
                     <h3
                       className={`${styles["item-title"]} d-mobile-none item-title horizontal-move`}
-                      data-speed={width <= 768 ? "1" : "0.03"}
+                      data-speed={width <= 768 ? "4" : "0.03"}
                     >
                       Decoration Mirors
                     </h3>
@@ -266,7 +266,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]}`}>
                   <h3
                     className={`${styles["item-title"]} item-title horizontal-move`}
-                    data-speed={width <= 768 ? "1" : "0.03"}
+                    data-speed={width <= 768 ? "4" : "0.03"}
                   >
                     Decoration Mirors
                   </h3>
@@ -294,7 +294,7 @@ export default function Home(props) {
                   >
                     <h3
                       className={`${styles["item-title"]} d-mobile-none item-title-2 horizontal-move`}
-                      data-speed={width <= 768 ? "-1" : "-0.03"}
+                      data-speed={width <= 768 ? "-4" : "-0.03"}
                     >
                       Smart Monitor Mirors
                     </h3>
@@ -308,7 +308,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]}`}>
                   <h3
                     className={`${styles["item-title"]} item-title-2 horizontal-move`}
-                    data-speed={width <= 768 ? "-1" : "-0.03"}
+                    data-speed={width <= 768 ? "-4" : "-0.03"}
                   >
                     Smart Monitor Mirors
                   </h3>
