@@ -126,7 +126,6 @@ export default function Home(props) {
 
     //run move text on scroll
     moveTextOnScroll(".main-title .horizontal-move");
-    moveTextOnScroll(".quote-text.horizontal-move");
     moveTextOnScroll(`.item-title.horizontal-move`);
     moveTextOnScroll(`.item-title-2.horizontal-move`);
 
@@ -212,9 +211,8 @@ export default function Home(props) {
         <section className={styles["quote"]}>
           <blockquote
             cite="#"
-            className={`${styles["quote-text"]} quote-text horizontal-move`}
+            className={`${styles["quote-text"]} quote-text`}
             ref={quoteRef}
-            data-speed={width <= 768 ? "0.1" : "0.2"}
           >
             Modern design is about realigning your priorities to help keep you
             focused on the important things in life
