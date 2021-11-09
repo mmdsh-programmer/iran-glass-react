@@ -55,7 +55,12 @@ export default function Home(props) {
   };
 
   //reveal texts on scroll
-  const textMaskReveal = (ref, stagger = 0, start = "top bottom") => {
+  const textMaskReveal = (
+    ref,
+    parentClass,
+    stagger = 0,
+    start = "top bottom"
+  ) => {
     new SplitType(ref, {
       types: "lines",
       linesClass: "split-child",
@@ -65,7 +70,7 @@ export default function Home(props) {
       linesClass: "split-parent",
     });
 
-    gsap.from(".word", {
+    gsap.from(`${parentClass} .word`, {
       scrollTrigger: {
         trigger: ref,
         start: start,
@@ -107,9 +112,9 @@ export default function Home(props) {
     //run move text on scroll
     moveTextOnScroll();
 
-    //run text reveal mask animation
-    textMaskReveal(descriptionRef.current, 0.04, "top center");
-    textMaskReveal(quoteRef.current, 0.08, "top center");
+    //run text reveal mask animations
+    textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
+    textMaskReveal(quoteRef.current, ".quote-text", 0.08, "top center");
   }, []);
   return (
     <>
@@ -169,7 +174,10 @@ export default function Home(props) {
               </picture>
             </figure>
             <div className={styles["hero-description-container"]}>
-              <p className={styles["hero-description"]} ref={descriptionRef}>
+              <p
+                className={`${styles["hero-description"]} description`}
+                ref={descriptionRef}
+              >
                 Iran Glass Technology with more than 40 years of experience and
                 with the aim of meeting the needs of customers and improving the
                 quality of products since 2001 has changed its name and created
@@ -186,7 +194,7 @@ export default function Home(props) {
         <section className={styles["quote"]}>
           <blockquote
             cite="#"
-            className={`${styles["quote-text"]}`}
+            className={`${styles["quote-text"]} quote-text`}
             ref={quoteRef}
           >
             Modern design is about realigning your priorities to help keep you
