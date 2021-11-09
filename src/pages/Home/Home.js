@@ -16,6 +16,7 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
+  const timeline = useRef(gsap.timeline({ paused: true }));
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -37,21 +38,35 @@ export default function Home(props) {
   };
 
   //move texts on scroll
-  const moveTextOnScroll = () => {
+  const moveTextOnScroll = (parentClass) => {
     const moveTextAnim = gsap.timeline({
       defaults: { ease: "powe4.out" },
       scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        scrub: 1.5,
+        trigger: parentClass,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 2,
       },
     });
-
-    gsap.utils.toArray(".horizontal-move").forEach((layer) => {
+    gsap.utils.toArray(parentClass).forEach((layer) => {
       const speed = layer.dataset.speed;
-      const movement = -(layer.offsetWidth * speed);
+      const movement = layer.offsetWidth * speed;
       moveTextAnim.to(layer, { x: movement }, 0);
     });
+
+    console.log(parentClass);
+    // timeline.current.to(quoteRef.current, {
+    //   x: window.innerWidth < 768 ? 60 : 500,
+    //   stagger: 1,
+    //   scrollTrigger: {
+    //     trigger: quoteRef.current,
+    //     id: "quote-text",
+    //     start: "top 50%",
+    //     end: "bottom top",
+    //     scrub: 2,
+    //     toggleActions: "play play play reverse",
+    //   },
+    // });
   };
 
   //reveal texts on scroll
@@ -110,7 +125,8 @@ export default function Home(props) {
     animateScrollDown();
 
     //run move text on scroll
-    moveTextOnScroll();
+    moveTextOnScroll(".main-title .horizontal-move");
+    moveTextOnScroll(".quote-text.horizontal-move");
 
     //run text reveal mask animations
     textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
@@ -123,18 +139,18 @@ export default function Home(props) {
           <div className={styles["background"]}></div>
           <div className={`container grid ${styles["container"]}`}>
             <h1
-              className={`${styles["hero-title"]} ${styles["main-title"]}`}
+              className={`${styles["hero-title"]} ${styles["main-title"]} main-title`}
               ref={mainTitleRef}
             >
-              <span className="block horizontal-move" data-speed="-0.04">
+              <span className="block horizontal-move" data-speed="0.04">
                 Iran
               </span>
-              <span className="block horizontal-move" data-speed="-0.08">
+              <span className="block horizontal-move" data-speed="0.08">
                 Glass
               </span>
               <span
                 className={`block ${styles["ml-custom"]} horizontal-move`}
-                data-speed="-0.12"
+                data-speed="0.12"
               >
                 Technology
               </span>
@@ -194,8 +210,9 @@ export default function Home(props) {
         <section className={styles["quote"]}>
           <blockquote
             cite="#"
-            className={`${styles["quote-text"]} quote-text`}
+            className={`${styles["quote-text"]} quote-text horizontal-move`}
             ref={quoteRef}
+            data-speed="-0.1"
           >
             Modern design is about realigning your priorities to help keep you
             focused on the important things in life
