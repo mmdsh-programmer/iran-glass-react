@@ -446,7 +446,6 @@
 
   .quote .quote-text {
     font-size: 54px;
-    opacity: 0;
   }
 
   .quote .quote-text::before {
