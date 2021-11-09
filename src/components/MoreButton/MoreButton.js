@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styles from "./MoreButton.module.css";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { TweenMax, Power4, Back } from "gsap";
+import { TweenMax, Power4 } from "gsap";
 
 export default function MoreButton(props) {
   const { children, className, ...rest } = props;

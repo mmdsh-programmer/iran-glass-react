@@ -10,7 +10,7 @@ import useWindowSize from "hooks/useWindowSize";
 
 export default function Home(props) {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   //refs
   const mainTitleRef = useRef(null);
@@ -26,7 +26,7 @@ export default function Home(props) {
 
   //scroll down animation functions
   const animateScrollDown = () => {
-    let tween = gsap.fromTo(
+    gsap.fromTo(
       scrollDownRef.current,
       { rotation: 0 },
       {
