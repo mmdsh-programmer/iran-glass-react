@@ -6,9 +6,11 @@ import { gsap, Power4 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
+import useWindowSize from "hooks/useWindowSize";
 
 export default function Home(props) {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
+  const { width, height } = useWindowSize();
 
   //refs
   const mainTitleRef = useRef(null);
@@ -16,7 +18,6 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
-  const timeline = useRef(gsap.timeline({ paused: true }));
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -54,7 +55,6 @@ export default function Home(props) {
       moveTextAnim.to(layer, { x: movement }, 0);
     });
 
-    console.log(parentClass);
     // timeline.current.to(quoteRef.current, {
     //   x: window.innerWidth < 768 ? 60 : 500,
     //   stagger: 1,
@@ -127,6 +127,8 @@ export default function Home(props) {
     //run move text on scroll
     moveTextOnScroll(".main-title .horizontal-move");
     moveTextOnScroll(".quote-text.horizontal-move");
+    moveTextOnScroll(`.item-title.horizontal-move`);
+    moveTextOnScroll(`.item-title-2.horizontal-move`);
 
     //run text reveal mask animations
     textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
@@ -212,7 +214,7 @@ export default function Home(props) {
             cite="#"
             className={`${styles["quote-text"]} quote-text horizontal-move`}
             ref={quoteRef}
-            data-speed="-0.1"
+            data-speed={width <= 768 ? "0.1" : "0.2"}
           >
             Modern design is about realigning your priorities to help keep you
             focused on the important things in life
@@ -248,7 +250,10 @@ export default function Home(props) {
                   <div
                     className={`${styles["item-image-holder"]} d-mobile-flex`}
                   >
-                    <h3 className={`${styles["item-title"]} d-mobile-none`}>
+                    <h3
+                      className={`${styles["item-title"]} d-mobile-none item-title horizontal-move`}
+                      data-speed={width <= 768 ? "1" : "0.03"}
+                    >
                       Decoration Mirors
                     </h3>
                     <img
@@ -259,7 +264,12 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3 className={styles["item-title"]}>Decoration Mirors</h3>
+                  <h3
+                    className={`${styles["item-title"]} item-title horizontal-move`}
+                    data-speed={width <= 768 ? "1" : "0.03"}
+                  >
+                    Decoration Mirors
+                  </h3>
                   <p className={styles["item-description"]}>
                     Iran Glass Technology with more than 40 years of experience
                     and with the aim of meeting the needs of customers and
@@ -282,7 +292,10 @@ export default function Home(props) {
                   <div
                     className={`${styles["item-image-holder"]} d-mobile-flex`}
                   >
-                    <h3 className={`${styles["item-title"]} d-mobile-none`}>
+                    <h3
+                      className={`${styles["item-title"]} d-mobile-none item-title-2 horizontal-move`}
+                      data-speed={width <= 768 ? "-1" : "-0.03"}
+                    >
                       Smart Monitor Mirors
                     </h3>
                     <img
@@ -293,7 +306,12 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3 className={styles["item-title"]}>Smart Monitor Mirors</h3>
+                  <h3
+                    className={`${styles["item-title"]} item-title-2 horizontal-move`}
+                    data-speed={width <= 768 ? "-1" : "-0.03"}
+                  >
+                    Smart Monitor Mirors
+                  </h3>
                   <p className={styles["item-description"]}>
                     Iran Glass Technology with more than 40 years of experience
                     and with the aim of meeting the needs of customers and
