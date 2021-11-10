@@ -93,6 +93,8 @@
   mask-image: radial-gradient(#fff, #000); */
   position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .hero .hero-image-container .inner-image-container {
@@ -120,6 +122,16 @@
   border-radius: 400px 400px 0px 0px;
 }
 
+.hero .hero-image-container.first:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: white;
+}
+
 .hero .hero-image-container.second {
   width: min(32.9vw, 631px);
   height: min(43.44vw, 834px);
@@ -133,9 +145,9 @@
 .hero .hero-image-container.first img,
 .hero .hero-image-container.second img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   opacity: 1;
+  position: absolute;
 }
 
 /* --------quote----------- */

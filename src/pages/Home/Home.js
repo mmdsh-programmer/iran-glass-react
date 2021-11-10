@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
-import { gsap, Power4 } from "gsap";
+import { gsap, Power4, TimelineLite, Expo, Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
@@ -11,6 +11,8 @@ import useWindowSize from "hooks/useWindowSize";
 export default function Home(props) {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
   const { width } = useWindowSize();
+  const tl = new TimelineLite();
+  let imageReveal = CSSRulePlugin.getRule(".image-container:after");
 
   //refs
   const mainTitleRef = useRef(null);
@@ -18,6 +20,7 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
+  const imageRef = useRef(null);
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -39,14 +42,14 @@ export default function Home(props) {
   };
 
   //move texts on scroll
-  const moveTextOnScroll = (parentClass) => {
+  const moveToRight = (parentClass) => {
     const moveTextAnim = gsap.timeline({
-      defaults: { ease: "powe4.out" },
+      defaults: { ease: "powe2.out" },
       scrollTrigger: {
         trigger: parentClass,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 2,
+        start: "top center",
+        // end: "bottom 80%",
+        scrub: 3,
       },
     });
     gsap.utils.toArray(parentClass).forEach((layer) => {
@@ -54,19 +57,23 @@ export default function Home(props) {
       const movement = layer.offsetWidth * speed;
       moveTextAnim.to(layer, { x: movement }, 0);
     });
+  };
 
-    // timeline.current.to(quoteRef.current, {
-    //   x: window.innerWidth < 768 ? 60 : 500,
-    //   stagger: 1,
-    //   scrollTrigger: {
-    //     trigger: quoteRef.current,
-    //     id: "quote-text",
-    //     start: "top 50%",
-    //     end: "bottom top",
-    //     scrub: 2,
-    //     toggleActions: "play play play reverse",
-    //   },
-    // });
+  const moveToLeft = (parentClass) => {
+    const moveTextAnim = gsap.timeline({
+      defaults: { ease: "powe2.out" },
+      scrollTrigger: {
+        trigger: parentClass,
+        start: "top center",
+        end: "bottom 80%",
+        scrub: 3,
+      },
+    });
+    gsap.utils.toArray(parentClass).forEach((layer) => {
+      const speed = -1 * layer.dataset.speed;
+      const movement = layer.offsetWidth * speed;
+      moveTextAnim.to(layer, { x: movement }, 0);
+    });
   };
 
   //reveal texts on scroll
@@ -97,37 +104,44 @@ export default function Home(props) {
     });
   };
 
+  //reveal images on scroll
+
   useEffect(() => {
     //run main title animation
     animateText(mainTitleRef.current.children, {
       ease: Power4.easeOut,
-      duration: 1,
+      duration: 0.8,
       delay: 0.3,
       y: 700,
       skewY: "10deg",
-      stagger: {
-        amount: 0.3,
-      },
+      stagger: 0.3,
     });
 
     //run subtitle animations
     animateText(subTitleRef.current.children, {
       ease: Power4.easeOut,
-      delay: 1.2,
+      delay: 0.3,
       y: 500,
       skewY: "10deg",
-      stagger: {
-        amount: 0.3,
-      },
+      stagger: 0.3,
+    });
+
+    tl.to(imageReveal, 1.4, {
+      height: "0%",
+      ease: Expo.easeInOut,
+    }).from(imageRef.current, 1.3, {
+      scale: 1.5,
+      ease: Power2.easeInOut,
+      delay: -1.5,
     });
 
     //run scroll down animations
     animateScrollDown();
 
     //run move text on scroll
-    moveTextOnScroll(".main-title .horizontal-move");
-    moveTextOnScroll(`.item-title.horizontal-move`);
-    moveTextOnScroll(`.item-title-2.horizontal-move`);
+    // moveToRight(".main-title .move-right");
+    // moveToLeft(`.item-title.move-left`);
+    // moveTextOnScroll(`.item-title-2.horizontal-move`);
 
     //run text reveal mask animations
     textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
@@ -143,18 +157,9 @@ export default function Home(props) {
               className={`${styles["hero-title"]} ${styles["main-title"]} main-title`}
               ref={mainTitleRef}
             >
-              <span className="block horizontal-move" data-speed="0.04">
-                Iran
-              </span>
-              <span className="block horizontal-move" data-speed="0.08">
-                Glass
-              </span>
-              <span
-                className={`block ${styles["ml-custom"]} horizontal-move`}
-                data-speed="0.12"
-              >
-                Technology
-              </span>
+              <span className="block">Iran</span>
+              <span className="block">Glass</span>
+              <span className={`block ${styles["ml-custom"]}`}>Technology</span>
             </h1>
             <div className={styles["hero-subtitle-container"]}>
               <h3 className={styles["hero-subtitle"]} ref={subTitleRef}>
@@ -168,7 +173,15 @@ export default function Home(props) {
                 ref={scrollDownRef}
               />
             </div>
-            <figure
+            <div
+              className={`${styles["hero-image-container"]} ${styles["first"]} image-container`}
+            >
+              <img
+                ref={(el) => (imageRef.current = el)}
+                src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
+              />
+            </div>
+            {/* <figure
               className={`${styles["hero-image-container"]} ${styles["first"]}`}
             >
               <picture className={styles["inner-image-container"]}>
@@ -178,7 +191,7 @@ export default function Home(props) {
                   title="Iran Glass"
                 />
               </picture>
-            </figure>
+            </figure> */}
             <figure
               className={`${styles["hero-image-container"]} ${styles["second"]}`}
             >
@@ -249,8 +262,7 @@ export default function Home(props) {
                     className={`${styles["item-image-holder"]} d-mobile-flex`}
                   >
                     <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title horizontal-move`}
-                      data-speed={width <= 768 ? "4" : "0.03"}
+                      className={`${styles["item-title"]} d-mobile-none item-title`}
                     >
                       Decoration Mirors
                     </h3>
@@ -262,10 +274,7 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3
-                    className={`${styles["item-title"]} item-title horizontal-move`}
-                    data-speed={width <= 768 ? "4" : "0.03"}
-                  >
+                  <h3 className={`${styles["item-title"]} item-title`}>
                     Decoration Mirors
                   </h3>
                   <p className={styles["item-description"]}>
@@ -291,8 +300,7 @@ export default function Home(props) {
                     className={`${styles["item-image-holder"]} d-mobile-flex`}
                   >
                     <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title-2 horizontal-move`}
-                      data-speed={width <= 768 ? "-4" : "-0.03"}
+                      className={`${styles["item-title"]} d-mobile-none item-title-2`}
                     >
                       Smart Monitor Mirors
                     </h3>
@@ -304,10 +312,7 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3
-                    className={`${styles["item-title"]} item-title-2 horizontal-move`}
-                    data-speed={width <= 768 ? "-4" : "-0.03"}
-                  >
+                  <h3 className={`${styles["item-title"]} item-title-2`}>
                     Smart Monitor Mirors
                   </h3>
                   <p className={styles["item-description"]}>
