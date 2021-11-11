@@ -12,7 +12,6 @@ export default function Home(props) {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
   const { width } = useWindowSize();
   const tl = new TimelineLite();
-  let imageReveal = CSSRulePlugin.getRule(".image-container:after");
 
   //refs
   const mainTitleRef = useRef(null);
@@ -20,7 +19,9 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
+  const imageContainer = useRef(null);
   const imageRef = useRef(null);
+  const imageReveal = useRef(null);
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -104,6 +105,60 @@ export default function Home(props) {
     });
   };
 
+  const imageMaskReveal = () => {
+    const imageContainers = gsap.utils.toArray(".image-container");
+    const revealCover = gsap.utils.toArray(".reveal-cover");
+    const motionImages = gsap.utils.toArray(".reveal-image");
+    let scrollTrigger = null;
+    imageContainers.forEach((container, i) => {
+      scrollTrigger = {
+        trigger: container,
+        start: "top bottom",
+      };
+      gsap.from(container, 1.4, {
+        scale: 0.4,
+        ease: Power2.easeOut,
+        duration: 3,
+        scrollTrigger: scrollTrigger,
+      });
+
+      gsap.from(revealCover[i], 2, {
+        scale: 0.4,
+        top: 0,
+        ease: Power2.easeOut,
+        duration: 3,
+        scrollTrigger: scrollTrigger,
+      });
+
+      gsap.from(motionImages[i], 2, {
+        scale: 0.1,
+        top: 0,
+        ease: Power2.easeOut,
+        duration: 3,
+        scrollTrigger: scrollTrigger,
+      });
+    });
+  };
+
+  const moveItemsOnScroll = () => {
+    const items = gsap.utils.toArray(".horizontal-move");
+    const animation = gsap.timeline({
+      defaults: { ease: "powe2.out" },
+      scrollTrigger: {
+        trigger: document.body,
+        start: "start center",
+        end: "bottom 80%",
+        scrub: 3,
+      },
+    });
+    items.forEach((item, i) => {
+      const speed = item.dataset.speed;
+      const movement = item.offsetWidth * speed;
+      gsap.set(item, { x: 0 });
+      animation.to(item, { x: movement }, 0);
+    });
+  };
+
   //reveal images on scroll
 
   useEffect(() => {
@@ -126,26 +181,18 @@ export default function Home(props) {
       stagger: 0.3,
     });
 
-    tl.to(imageReveal, 1.4, {
-      height: "0%",
-      ease: Expo.easeInOut,
-    }).from(imageRef.current, 1.3, {
-      scale: 1.5,
-      ease: Power2.easeInOut,
-      delay: -1.5,
-    });
-
     //run scroll down animations
     animateScrollDown();
 
     //run move text on scroll
-    // moveToRight(".main-title .move-right");
-    // moveToLeft(`.item-title.move-left`);
-    // moveTextOnScroll(`.item-title-2.horizontal-move`);
+    moveItemsOnScroll();
 
     //run text reveal mask animations
     textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
     textMaskReveal(quoteRef.current, ".quote-text", 0.08, "top center");
+
+    //run image mask reveal animations
+    imageMaskReveal();
   }, []);
   return (
     <>
@@ -157,9 +204,18 @@ export default function Home(props) {
               className={`${styles["hero-title"]} ${styles["main-title"]} main-title`}
               ref={mainTitleRef}
             >
-              <span className="block">Iran</span>
-              <span className="block">Glass</span>
-              <span className={`block ${styles["ml-custom"]}`}>Technology</span>
+              <span className="block horizontal-move" data-speed="0.1">
+                Iran
+              </span>
+              <span className="block horizontal-move" data-speed="0.2">
+                Glass
+              </span>
+              <span
+                className={`block ${styles["ml-custom"]} horizontal-move`}
+                data-speed="0.3"
+              >
+                Technology
+              </span>
             </h1>
             <div className={styles["hero-subtitle-container"]}>
               <h3 className={styles["hero-subtitle"]} ref={subTitleRef}>
@@ -174,35 +230,27 @@ export default function Home(props) {
               />
             </div>
             <div
-              className={`${styles["hero-image-container"]} ${styles["first"]} image-container`}
+              className={`${styles["hero-image-container"]} ${styles["first"]} border-overlay image-container `}
             >
+              <div className={`${styles["reveal-cover"]} reveal-cover`}></div>
               <img
-                ref={(el) => (imageRef.current = el)}
+                alt="Iran Glass"
+                title="Iran Glass"
                 src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
+                className="reveal-image"
               />
             </div>
-            {/* <figure
-              className={`${styles["hero-image-container"]} ${styles["first"]}`}
+            <div
+              className={`${styles["hero-image-container"]} ${styles["second"]} image-container`}
             >
-              <picture className={styles["inner-image-container"]}>
-                <img
-                  src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
-                  alt="hero"
-                  title="Iran Glass"
-                />
-              </picture>
-            </figure> */}
-            <figure
-              className={`${styles["hero-image-container"]} ${styles["second"]}`}
-            >
-              <picture className={styles["inner-image-container"]}>
-                <img
-                  src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
-                  alt="hero"
-                  title="Iran Glass"
-                />
-              </picture>
-            </figure>
+              <div className={`${styles["reveal-cover"]} reveal-cover`}></div>
+              <img
+                src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
+                alt="hero"
+                title="Iran Glass"
+                className="reveal-image"
+              />
+            </div>
             <div className={styles["hero-description-container"]}>
               <p
                 className={`${styles["hero-description"]} description`}
@@ -259,15 +307,16 @@ export default function Home(props) {
               >
                 <div className={`${styles["col"]} ${styles["image-col"]}`}>
                   <div
-                    className={`${styles["item-image-holder"]} d-mobile-flex`}
+                    className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
                     <h3
                       className={`${styles["item-title"]} d-mobile-none item-title`}
                     >
                       Decoration Mirors
                     </h3>
+                    <div className="reveal-cover"></div>
                     <img
-                      className={styles["item-image"]}
+                      className={`${styles["item-image"]} reveal-image`}
                       src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
                       alt="work 1"
                     />
@@ -297,15 +346,16 @@ export default function Home(props) {
                   className={`${styles["order-desktop-2"]} ${styles["col"]} ${styles["image-col"]}`}
                 >
                   <div
-                    className={`${styles["item-image-holder"]} d-mobile-flex`}
+                    className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
                     <h3
                       className={`${styles["item-title"]} d-mobile-none item-title-2`}
                     >
                       Smart Monitor Mirors
                     </h3>
+                    <div className="reveal-cover"></div>
                     <img
-                      className={styles["item-image"]}
+                      className={`${styles["item-image"]} reveal-image`}
                       src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
                       alt="work 2"
                     />
