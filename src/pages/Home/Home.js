@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
-import { gsap, Power4, TimelineLite, Expo, Power2 } from "gsap";
+import { gsap, Power4, Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
@@ -11,7 +11,6 @@ import useWindowSize from "hooks/useWindowSize";
 export default function Home(props) {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
   const { width } = useWindowSize();
-  const tl = new TimelineLite();
 
   //refs
   const mainTitleRef = useRef(null);
@@ -19,9 +18,6 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
-  const imageContainer = useRef(null);
-  const imageRef = useRef(null);
-  const imageReveal = useRef(null);
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -40,41 +36,6 @@ export default function Home(props) {
         ease: "linear",
       }
     );
-  };
-
-  //move texts on scroll
-  const moveToRight = (parentClass) => {
-    const moveTextAnim = gsap.timeline({
-      defaults: { ease: "powe2.out" },
-      scrollTrigger: {
-        trigger: parentClass,
-        start: "top center",
-        // end: "bottom 80%",
-        scrub: 3,
-      },
-    });
-    gsap.utils.toArray(parentClass).forEach((layer) => {
-      const speed = layer.dataset.speed;
-      const movement = layer.offsetWidth * speed;
-      moveTextAnim.to(layer, { x: movement }, 0);
-    });
-  };
-
-  const moveToLeft = (parentClass) => {
-    const moveTextAnim = gsap.timeline({
-      defaults: { ease: "powe2.out" },
-      scrollTrigger: {
-        trigger: parentClass,
-        start: "top center",
-        end: "bottom 80%",
-        scrub: 3,
-      },
-    });
-    gsap.utils.toArray(parentClass).forEach((layer) => {
-      const speed = -1 * layer.dataset.speed;
-      const movement = layer.offsetWidth * speed;
-      moveTextAnim.to(layer, { x: movement }, 0);
-    });
   };
 
   //reveal texts on scroll
@@ -140,22 +101,40 @@ export default function Home(props) {
     });
   };
 
-  const moveItemsOnScroll = () => {
-    const items = gsap.utils.toArray(".horizontal-move");
+  const moveHeroItemsOnScroll = () => {
+    const items = gsap.utils.toArray(".hero-title-move");
     const animation = gsap.timeline({
       defaults: { ease: "powe2.out" },
       scrollTrigger: {
         trigger: document.body,
-        start: "start center",
-        end: "bottom 80%",
+        start: "start start",
+        end: "bottom start",
         scrub: 3,
       },
     });
-    items.forEach((item, i) => {
+    items.forEach((item) => {
       const speed = item.dataset.speed;
       const movement = item.offsetWidth * speed;
-      gsap.set(item, { x: 0 });
       animation.to(item, { x: movement }, 0);
+    });
+  };
+
+  const moveItemsOnScroll = () => {
+    document.querySelectorAll(".horizontal-move").forEach((layer) => {
+      const moveTextAnim = gsap.timeline({
+        defaults: { ease: "powe4.out" },
+        scrollTrigger: {
+          trigger: layer,
+          start: "top center",
+          scrub: 3,
+        },
+      });
+      const speed = layer.dataset.speed;
+      moveTextAnim.to(
+        layer,
+        { x: Math.round(-layer.offsetWidth / (speed * 3)) },
+        0
+      );
     });
   };
 
@@ -184,7 +163,10 @@ export default function Home(props) {
     //run scroll down animations
     animateScrollDown();
 
-    //run move text on scroll
+    //run move hero text on scroll
+    moveHeroItemsOnScroll();
+
+    //run move items on scroll
     moveItemsOnScroll();
 
     //run text reveal mask animations
@@ -204,15 +186,15 @@ export default function Home(props) {
               className={`${styles["hero-title"]} ${styles["main-title"]} main-title`}
               ref={mainTitleRef}
             >
-              <span className="block horizontal-move" data-speed="0.1">
+              <span className="block hero-title-move" data-speed="0.02">
                 Iran
               </span>
-              <span className="block horizontal-move" data-speed="0.2">
+              <span className="block hero-title-move" data-speed="0.035">
                 Glass
               </span>
               <span
-                className={`block ${styles["ml-custom"]} horizontal-move`}
-                data-speed="0.3"
+                className={`block ${styles["ml-custom"]} hero-title-move`}
+                data-speed="0.045"
               >
                 Technology
               </span>
@@ -310,7 +292,8 @@ export default function Home(props) {
                     className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
                     <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title`}
+                      className={`${styles["item-title"]} d-mobile-none item-title horizontal-move`}
+                      data-speed={width <= 768 ? 0 : 2}
                     >
                       Decoration Mirors
                     </h3>
@@ -323,7 +306,10 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3 className={`${styles["item-title"]} item-title`}>
+                  <h3
+                    className={`${styles["item-title"]} item-title horizontal-move`}
+                    data-speed={width <= 768 ? 0 : 2}
+                  >
                     Decoration Mirors
                   </h3>
                   <p className={styles["item-description"]}>
@@ -349,7 +335,8 @@ export default function Home(props) {
                     className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
                     <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title-2`}
+                      className={`${styles["item-title"]} d-mobile-none item-title-2 horizontal-move`}
+                      data-speed="-2"
                     >
                       Smart Monitor Mirors
                     </h3>
@@ -362,7 +349,10 @@ export default function Home(props) {
                   </div>
                 </div>
                 <div className={`${styles["col"]}`}>
-                  <h3 className={`${styles["item-title"]} item-title-2`}>
+                  <h3
+                    className={`${styles["item-title"]} item-title-2 horizontal-move`}
+                    data-speed="-2"
+                  >
                     Smart Monitor Mirors
                   </h3>
                   <p className={styles["item-description"]}>

@@ -22,7 +22,7 @@
 // }
 
 import { useEffect, useRef, useState } from "react";
-import { TweenLite, Power1 } from "gsap";
+import { gsap, Power4 } from "gsap";
 import styles from "./SmoothScroll.module.css";
 
 export default function SmoothScroll({ children }) {
@@ -37,9 +37,12 @@ export default function SmoothScroll({ children }) {
   });
 
   const onScroll = () => {
-    TweenLite.to(viewportRef.current, 3, {
+    gsap.to(viewportRef.current, {
+      force3D: true,
+      rotate: 0,
       y: -window.pageYOffset,
-      ease: Power1.easeOut,
+      duration: 3,
+      ease: Power4.easeOut,
     });
   };
 
@@ -50,7 +53,10 @@ export default function SmoothScroll({ children }) {
 
   return (
     <>
-      <div className={styles["viewport"]} ref={viewportRef}>
+      <div
+        className={`${styles["viewport"]} scroll-container`}
+        ref={viewportRef}
+      >
         {children}
       </div>
       <div

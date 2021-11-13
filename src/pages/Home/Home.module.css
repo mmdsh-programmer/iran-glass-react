@@ -261,7 +261,7 @@
   color: var(--grey-lighten-3);
   position: relative;
   z-index: 1;
-  transform: translateX(-205px);
+  /* transform: translateX(-205px); */
 }
 
 .works .work-item.typical-item .item-title {
@@ -269,7 +269,7 @@
 }
 
 .work-item.reverse .item-title {
-  transform: translateX(clamp(300px, 13.56vw, 356px));
+  /* transform: translateX(clamp(300px, 13.56vw, 356px)); */
 }
 
 .work-item .item-description {
