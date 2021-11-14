@@ -120,6 +120,7 @@
 .hero .hero-image-container.first img,
 .hero .hero-image-container.second img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   opacity: 1;
   position: absolute;
@@ -187,10 +188,11 @@
 .works {
   margin: 250px 0 0;
   padding-top: 299px;
-  border-top-left-radius: max(50vw);
-  border-top-right-radius: max(50vw);
+  /* border-top-left-radius: max(50vw);
+  border-top-right-radius: max(50vw); */
   border-top: solid 1px #979797;
   background-color: var(--grey-darken-3);
+  position: relative;
 }
 
 .works .container {
@@ -482,5 +484,10 @@
 
   .works .work-item .item-title {
     font-size: 59px;
+  }
+
+  .works .works-header-holder .works-header {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }

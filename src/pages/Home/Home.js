@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
-import { gsap, Power4, Power2 } from "gsap";
+import { gsap, Power4, Power2, Expo } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
@@ -18,6 +18,7 @@ export default function Home(props) {
   const scrollDownRef = useRef(null);
   const quoteRef = useRef(null);
   const descriptionRef = useRef(null);
+  const workRef = useRef(null);
 
   //text animation functions
   const animateText = (ref, options) => {
@@ -77,14 +78,14 @@ export default function Home(props) {
         start: "top bottom",
       };
       gsap.from(container, 1.4, {
-        scale: 0.4,
+        scale: 0.6,
         ease: Power2.easeOut,
         duration: 3,
         scrollTrigger: scrollTrigger,
       });
 
       gsap.from(revealCover[i], 2, {
-        scale: 0.4,
+        scale: 1.4,
         top: 0,
         ease: Power2.easeOut,
         duration: 3,
@@ -92,7 +93,8 @@ export default function Home(props) {
       });
 
       gsap.from(motionImages[i], 2, {
-        scale: 0.1,
+        autoAlpha: 0,
+        scale: 0.2,
         top: 0,
         ease: Power2.easeOut,
         duration: 3,
@@ -120,13 +122,13 @@ export default function Home(props) {
   };
 
   const moveItemsOnScroll = () => {
-    document.querySelectorAll(".horizontal-move").forEach((layer) => {
+    gsap.utils.toArray(".horizontal-move").forEach((layer) => {
       const moveTextAnim = gsap.timeline({
         defaults: { ease: "powe4.out" },
         scrollTrigger: {
           trigger: layer,
-          start: "top center",
-          scrub: 3,
+          start: "top bottom",
+          scrub: 2,
         },
       });
       const speed = layer.dataset.speed;
@@ -136,6 +138,22 @@ export default function Home(props) {
         0
       );
     });
+  };
+
+  const loadWorks = () => {
+    // gsap.from(workRef.current, {
+    //   // borderTopLeftRadius: 1000,
+    //   // borderTopRightRadius: 1000,
+    //   // // borderRadius: 1000,
+    //   // yPercent: 20,
+    //   ease: Power2.easeInOut,
+    //   duration: 2,
+    //   scrollTrigger: {
+    //     trigger: workRef.current,
+    //     start: "top bottom",
+    //     pin: workRef.current,
+    //   },
+    // });
   };
 
   //reveal images on scroll
@@ -175,6 +193,7 @@ export default function Home(props) {
 
     //run image mask reveal animations
     imageMaskReveal();
+    loadWorks();
   }, []);
   return (
     <>
@@ -271,7 +290,7 @@ export default function Home(props) {
           </div>
         </section>
 
-        <section className={styles["works"]}>
+        <section className={styles["works"]} ref={workRef}>
           <header className={styles["works-header-holder"]}>
             <h2 className={`${styles["works-header"]}`}>
               We are producer of decoration & smart mirors
