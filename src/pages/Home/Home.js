@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
 import { Footer } from "components/Footer";
-import { gsap, Power4, Power2, Expo } from "gsap";
+import { gsap, Power4, Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
@@ -71,35 +71,44 @@ export default function Home(props) {
     const imageContainers = gsap.utils.toArray(".image-container");
     const revealCover = gsap.utils.toArray(".reveal-cover");
     const motionImages = gsap.utils.toArray(".reveal-image");
-    let scrollTrigger = null;
+    const borderedImages = gsap.utils.toArray(".item-title-bordered");
+
     imageContainers.forEach((container, i) => {
-      scrollTrigger = {
-        trigger: container,
-        start: "top bottom",
-      };
-      gsap.from(container, 1.4, {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top bottom",
+        },
+      });
+
+      tl.from(container, {
         scale: 0.6,
         ease: Power2.easeOut,
-        duration: 3,
-        scrollTrigger: scrollTrigger,
+        duration: 1.3,
       });
 
-      gsap.from(revealCover[i], 2, {
-        scale: 1.4,
-        top: 0,
-        ease: Power2.easeOut,
-        duration: 3,
-        scrollTrigger: scrollTrigger,
-      });
+      tl.from(
+        revealCover[i],
+        {
+          scale: 1.4,
+          top: 0,
+          ease: Power2.easeOut,
+          duration: 2,
+        },
+        "-=1.3"
+      );
 
-      gsap.from(motionImages[i], 2, {
-        autoAlpha: 0,
-        scale: 0.2,
-        top: 0,
-        ease: Power2.easeOut,
-        duration: 3,
-        scrollTrigger: scrollTrigger,
-      });
+      tl.from(
+        motionImages[i],
+        {
+          autoAlpha: 0,
+          scale: 0.2,
+          top: 0,
+          ease: Power2.easeOut,
+          duration: 2,
+        },
+        "-=2"
+      );
     });
   };
 
@@ -307,15 +316,15 @@ export default function Home(props) {
                 className={`row ${styles["work-item"]} ${styles["typical-item"]}`}
               >
                 <div className={`${styles["col"]} ${styles["image-col"]}`}>
+                  <h3
+                    className={`${styles["item-title"]} ${styles["item-title-bordered"]} d-mobile-none item-title horizontal-move`}
+                    data-speed={2}
+                  >
+                    Decoration Mirors
+                  </h3>
                   <div
                     className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
-                    <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title horizontal-move`}
-                      data-speed={width <= 768 ? 0 : 2}
-                    >
-                      Decoration Mirors
-                    </h3>
                     <div className="reveal-cover"></div>
                     <img
                       className={`${styles["item-image"]} reveal-image`}
@@ -327,7 +336,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]}`}>
                   <h3
                     className={`${styles["item-title"]} item-title horizontal-move`}
-                    data-speed={width <= 768 ? 0 : 2}
+                    data-speed={2}
                   >
                     Decoration Mirors
                   </h3>
@@ -350,15 +359,15 @@ export default function Home(props) {
                 <div
                   className={`${styles["order-desktop-2"]} ${styles["col"]} ${styles["image-col"]}`}
                 >
+                  <h3
+                    className={`${styles["item-title"]} ${styles["item-title-bordered"]} item-title-bordered d-mobile-none item-title-2 horizontal-move`}
+                    data-speed="-2"
+                  >
+                    Smart Monitor Mirors
+                  </h3>
                   <div
                     className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
                   >
-                    <h3
-                      className={`${styles["item-title"]} d-mobile-none item-title-2 horizontal-move`}
-                      data-speed="-2"
-                    >
-                      Smart Monitor Mirors
-                    </h3>
                     <div className="reveal-cover"></div>
                     <img
                       className={`${styles["item-image"]} reveal-image`}
