@@ -20,9 +20,25 @@ export default function Home(props) {
   const descriptionRef = useRef(null);
   const workRef = useRef(null);
 
-  //text animation functions
-  const animateText = (ref, options) => {
-    gsap.from(ref, 1.8, options);
+  //hero animation function
+  const heroAnimations = () => {
+    const tl = gsap.timeline();
+    tl.from(mainTitleRef.current.children, {
+      ease: Power4.easeOut,
+      duration: 1.3,
+      delay: 0.2,
+      y: 700,
+      stagger: 0.3,
+    }).from(
+      subTitleRef.current.children,
+      {
+        ease: Power4.easeOut,
+        duration: 1.3,
+        y: 500,
+        stagger: 0.3,
+      },
+      "-=1.3"
+    );
   };
 
   //scroll down animation functions
@@ -37,6 +53,40 @@ export default function Home(props) {
         ease: "linear",
       }
     );
+  };
+
+  const quoteAnimations = () => {
+    new SplitType(quoteRef.current, {
+      types: "lines",
+      linesClass: "split-child",
+    });
+
+    new SplitType(quoteRef.current, {
+      linesClass: "split-parent",
+    });
+
+    new gsap.timeline({
+      scrollTrigger: {
+        trigger: quoteRef.current,
+        start: "center bottom - 20%",
+        end: "bottom start",
+      },
+    })
+      .from(quoteRef.current.parentNode, {
+        opacity: 0,
+        duration: 1.2,
+        ease: Power4.easeOut,
+      })
+      .from(
+        ".quote-text .word",
+        {
+          duration: 1.2,
+          y: 500,
+          stagger: 0.01,
+          ease: Power4.easeOut,
+        },
+        "-=1.2"
+      );
   };
 
   //reveal texts on scroll
@@ -67,11 +117,11 @@ export default function Home(props) {
     });
   };
 
+  //image mask reveal function
   const imageMaskReveal = () => {
     const imageContainers = gsap.utils.toArray(".image-container");
     const revealCover = gsap.utils.toArray(".reveal-cover");
     const motionImages = gsap.utils.toArray(".reveal-image");
-    const borderedImages = gsap.utils.toArray(".item-title-bordered");
 
     imageContainers.forEach((container, i) => {
       const tl = gsap.timeline({
@@ -112,6 +162,7 @@ export default function Home(props) {
     });
   };
 
+  //move hero items functions
   const moveHeroItemsOnScroll = () => {
     const items = gsap.utils.toArray(".hero-title-move");
     const animation = gsap.timeline({
@@ -130,6 +181,7 @@ export default function Home(props) {
     });
   };
 
+  //move items on scroll function
   const moveItemsOnScroll = () => {
     gsap.utils.toArray(".horizontal-move").forEach((layer) => {
       const moveTextAnim = gsap.timeline({
@@ -149,43 +201,11 @@ export default function Home(props) {
     });
   };
 
-  const loadWorks = () => {
-    // gsap.from(workRef.current, {
-    //   // borderTopLeftRadius: 1000,
-    //   // borderTopRightRadius: 1000,
-    //   // // borderRadius: 1000,
-    //   // yPercent: 20,
-    //   ease: Power2.easeInOut,
-    //   duration: 2,
-    //   scrollTrigger: {
-    //     trigger: workRef.current,
-    //     start: "top bottom",
-    //     pin: workRef.current,
-    //   },
-    // });
-  };
-
-  //reveal images on scroll
-
   useEffect(() => {
-    //run main title animation
-    animateText(mainTitleRef.current.children, {
-      ease: Power4.easeOut,
-      duration: 0.8,
-      delay: 0.3,
-      y: 700,
-      skewY: "10deg",
-      stagger: 0.3,
-    });
+    //run hero animations
+    heroAnimations();
 
     //run subtitle animations
-    animateText(subTitleRef.current.children, {
-      ease: Power4.easeOut,
-      delay: 0.3,
-      y: 500,
-      skewY: "10deg",
-      stagger: 0.3,
-    });
 
     //run scroll down animations
     animateScrollDown();
@@ -197,12 +217,12 @@ export default function Home(props) {
     moveItemsOnScroll();
 
     //run text reveal mask animations
-    textMaskReveal(descriptionRef.current, ".description", 0.04, "top center");
-    textMaskReveal(quoteRef.current, ".quote-text", 0.08, "top center");
+    textMaskReveal(descriptionRef.current, ".description", 0.01, "top center");
 
     //run image mask reveal animations
     imageMaskReveal();
-    loadWorks();
+
+    quoteAnimations();
   }, []);
   return (
     <>
@@ -318,7 +338,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]} ${styles["image-col"]}`}>
                   <h3
                     className={`${styles["item-title"]} ${styles["item-title-bordered"]} d-mobile-none item-title horizontal-move`}
-                    data-speed={2}
+                    data-speed={width <= 768 ? 0 : 2}
                   >
                     Decoration Mirors
                   </h3>
@@ -336,7 +356,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]}`}>
                   <h3
                     className={`${styles["item-title"]} item-title horizontal-move`}
-                    data-speed={2}
+                    data-speed={width <= 768 ? 0 : 2}
                   >
                     Decoration Mirors
                   </h3>
@@ -361,7 +381,7 @@ export default function Home(props) {
                 >
                   <h3
                     className={`${styles["item-title"]} ${styles["item-title-bordered"]} item-title-bordered d-mobile-none item-title-2 horizontal-move`}
-                    data-speed="-2"
+                    data-speed={width <= 768 ? 0 : -2}
                   >
                     Smart Monitor Mirors
                   </h3>
@@ -379,7 +399,7 @@ export default function Home(props) {
                 <div className={`${styles["col"]}`}>
                   <h3
                     className={`${styles["item-title"]} item-title-2 horizontal-move`}
-                    data-speed="-2"
+                    data-speed={width <= 768 ? 0 : -2}
                   >
                     Smart Monitor Mirors
                   </h3>

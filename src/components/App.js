@@ -9,12 +9,14 @@ import { SmoothScroll } from "./SmoothScroll";
 export default function App() {
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/category-details" component={CategoryDetails} />
-        <Route component={NotFound} />
-      </Switch>
+      <SmoothScroll>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/category-details" component={CategoryDetails} />
+          <Route component={NotFound} />
+        </Switch>
+      </SmoothScroll>
     </Router>
   );
 }
