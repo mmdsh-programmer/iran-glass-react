@@ -192,6 +192,9 @@ body {
   -webkit-text-size-adjust: 100%;
   background-color: #a7a8aa;
   height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
