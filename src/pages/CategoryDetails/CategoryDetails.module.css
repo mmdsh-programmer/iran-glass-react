@@ -167,6 +167,7 @@
 
 .gallery {
   margin-top: min(19.27vw, 370px);
+  padding-bottom: 390px;
 }
 
 .gallery .gallery-container {
@@ -241,10 +242,4 @@
   width: clamp(300px, 25.93vw, 497px);
   height: min(34vw, 653px);
   order: 9;
-}
-
-/* --------footer----------- */
-
-.custom-footer {
-  padding-top: 390px;
 }
