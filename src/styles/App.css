@@ -291,6 +291,10 @@ body {
   border-top-right-radius: 100vw;
 }
 
+.home-footer {
+  background-color: var(--grey-darken-3);
+}
+
 @media screen and (max-width: 575px) {
   .d-mobile-none {
     display: none;
