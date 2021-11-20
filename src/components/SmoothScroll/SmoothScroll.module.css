@@ -1,6 +1,6 @@
 .viewport {
   margin: 0 0 0 0;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   position: fixed;
 }
