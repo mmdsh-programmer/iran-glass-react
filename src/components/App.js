@@ -34,29 +34,26 @@ export default function App() {
 
   return (
     <>
-      {isLoading ? (
+      {/* {isLoading ? (
         <Preloader latency={calcLatency()} />
       ) : (
-        <SmoothScroll>
-          <Header />
-          <AnimatePresence exitBeforeEnter initial={true}>
-            <Switch location={location} key={location.pathname}>
-              <Route exact path="/" component={Home} />
-              <Route
-                exact
-                path="/category-details"
-                component={CategoryDetails}
-              />
-              <Route component={NotFound} />
-            </Switch>
-          </AnimatePresence>
-          {location.pathname === "/" ? (
-            <Footer classes="home-footer" />
-          ) : (
-            <Footer />
-          )}
-        </SmoothScroll>
-      )}
+        
+      )} */}
+      <SmoothScroll>
+        <Header />
+        <AnimatePresence exitBeforeEnter initial={true}>
+          <Switch location={location} key={location.pathname}>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/category-details" component={CategoryDetails} />
+            <Route component={NotFound} />
+          </Switch>
+        </AnimatePresence>
+        {location.pathname === "/" ? (
+          <Footer classes="home-footer" />
+        ) : (
+          <Footer />
+        )}
+      </SmoothScroll>
     </>
   );
 }

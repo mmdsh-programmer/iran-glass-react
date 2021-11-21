@@ -1,4 +1,11 @@
 /* --------hero----------- */
+.main-body > .transition {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  /* z-index: 999; */
+}
+
 .main-body .hero {
   position: relative;
   padding-top: clamp(100px, 9.63vw, 185px);
