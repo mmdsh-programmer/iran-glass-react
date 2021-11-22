@@ -1,10 +1,4 @@
 /* --------hero----------- */
-.main-body > .transition {
-  position: absolute;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  /* z-index: 999; */
-}
 
 .main-body .hero {
   position: relative;
@@ -193,15 +187,25 @@
 
 /* --------works----------- */
 .works {
-  margin: 250px 0 0;
+  margin: 0px 0 0;
   padding-top: 299px;
-  border-top-left-radius: max(50vw);
-  border-top-right-radius: max(50vw);
-  border-top: solid 1px #979797;
-  background-color: var(--grey-darken-3);
+  /* border-top-left-radius: max(50vw);
+  border-top-right-radius: max(50vw); */
+  /* border-top: solid 1px #979797; */
+  /* background-color: var(--grey-darken-3); */
   position: relative;
-  box-shadow: 0px 5px var(--grey-darken-3);
   padding-bottom: 328px;
+  box-shadow: 0px 10px var(--grey-darken-3);
+}
+
+.works > .transition {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 10px var(--grey-darken-3);
+  /* z-index: 999; */
 }
 
 .works .container {

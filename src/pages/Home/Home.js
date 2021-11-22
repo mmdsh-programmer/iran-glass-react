@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./Home.module.css";
 import { MoreButton } from "components/MoreButton";
@@ -228,22 +228,33 @@ export default function Home(props) {
     });
   };
 
+  //reveal section when enters the viewport
   const revealSection = () => {
     let path = document.querySelector(".path");
-    const start = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
-    const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
     const tween = gsap
       .timeline({ paused: true })
       .to(path, {
-        attr: { d: start },
+        attr: { d: "M 0 100 V 50 Q 50 0 100 50 V 100 z" },
         ease: Power2.easeIn,
-        duration: 2,
+        duration: 0.5,
       })
-      .to(path, { attr: { d: end }, ease: Power2.easeOut, duration: 2 })
-      .from(workRef.current.children[1], { y: 75, duration: 0.8 }, "-=.8"); //load content
+      .to(path, {
+        attr: { d: "M 0 100 V 0 Q 50 0 100 0 V 100 z" },
+        ease: Power2.easeOut,
+        duration: 1,
+      })
+      .from(
+        workRef.current.children[1],
+        {
+          y: 100,
+          autoAlpha: 0,
+          duration: 1,
+        },
+        "-=0.8"
+      ); //load content
     ScrollTrigger.create({
       trigger: workRef.current,
-      start: "start bottom",
+      start: width <= 768 ? "top top+=300" : "top top",
       toggleActions: "play none none reverse",
       animation: tween.play(),
     });
@@ -276,6 +287,7 @@ export default function Home(props) {
     //run parallax animation
     parallax();
 
+    //run reaveal section after entering the viewport
     revealSection();
   }, []);
   return (
@@ -388,114 +400,114 @@ export default function Home(props) {
         >
           <path
             className="path"
-            stroke="#424242"
-            strokeWidth="2px"
             dur="10s"
-            fill="#ff0000"
+            fill="#424242"
             vectorEffect="non-scaling-stroke"
             d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
           />
         </svg>
 
-        <div>
-          <header className={styles["works-header-holder"]}>
-            <h2 className={`${styles["works-header"]}`}>
-              We are producer of decoration & smart mirors
-            </h2>
-          </header>
+        <React.Fragment>
+          <div>
+            <header className={styles["works-header-holder"]}>
+              <h2 className={`${styles["works-header"]}`}>
+                We are producer of decoration & smart mirors
+              </h2>
+            </header>
 
-          <div
-            className={`container ${styles["container"]} ${styles["works-container"]}`}
-          >
             <div
-              className={`row wrap justify-center ${styles["custom-gap"]} ${styles["mobile-column"]}`}
+              className={`container ${styles["container"]} ${styles["works-container"]}`}
             >
-              <article
-                className={`row ${styles["work-item"]} ${styles["typical-item"]}`}
+              <div
+                className={`row wrap justify-center ${styles["custom-gap"]} ${styles["mobile-column"]}`}
               >
-                <div className={`${styles["col"]} ${styles["image-col"]}`}>
-                  <h3
-                    className={`${styles["item-title"]} ${styles["item-title-bordered"]} d-mobile-none item-title horizontal-move`}
-                    data-speed={width <= 768 ? 0 : 2}
-                  >
-                    Decoration Mirors
-                  </h3>
-                  <div
-                    className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
-                  >
-                    <div className="reveal-cover"></div>
-                    <img
-                      className={`${styles["item-image"]} reveal-image`}
-                      src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
-                      alt="work 1"
-                    />
-                  </div>
-                </div>
-                <div className={`${styles["col"]}`}>
-                  <h3
-                    className={`${styles["item-title"]} item-title horizontal-move`}
-                    data-speed={width <= 768 ? 0 : 2}
-                  >
-                    Decoration Mirors
-                  </h3>
-                  <p className={styles["item-description"]}>
-                    Iran Glass Technology with more than 40 years of experience
-                    and with the aim of meeting the needs of customers and
-                    improving the quality of products since 2001 has changed its
-                    name and created the Iranian glass technology brand (with
-                    the brand name Gilda Glass)
-                  </p>
-                  <MoreButton to="/" className={styles["info-button"]}>
-                    More information
-                  </MoreButton>
-                </div>
-              </article>
-
-              <article
-                className={`row ${styles["work-item"]} ${styles["reverse"]}`}
-              >
-                <div
-                  className={`${styles["order-desktop-2"]} ${styles["col"]} ${styles["image-col"]}`}
+                <article
+                  className={`row ${styles["work-item"]} ${styles["typical-item"]}`}
                 >
-                  <h3
-                    className={`${styles["item-title"]} ${styles["item-title-bordered"]} item-title-bordered d-mobile-none item-title-2 horizontal-move`}
-                    data-speed={width <= 768 ? 0 : -2}
-                  >
-                    Smart Monitor Mirors
-                  </h3>
-                  <div
-                    className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
-                  >
-                    <div className="reveal-cover"></div>
-                    <img
-                      className={`${styles["item-image"]} reveal-image`}
-                      src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
-                      alt="work 2"
-                    />
+                  <div className={`${styles["col"]} ${styles["image-col"]}`}>
+                    <h3
+                      className={`${styles["item-title"]} ${styles["item-title-bordered"]} d-mobile-none item-title horizontal-move`}
+                      data-speed={width <= 768 ? 0 : 2}
+                    >
+                      Decoration Mirors
+                    </h3>
+                    <div
+                      className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
+                    >
+                      <div className="reveal-cover"></div>
+                      <img
+                        className={`${styles["item-image"]} reveal-image`}
+                        src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
+                        alt="work 1"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className={`${styles["col"]}`}>
-                  <h3
-                    className={`${styles["item-title"]} item-title-2 horizontal-move`}
-                    data-speed={width <= 768 ? 0 : -2}
+                  <div className={`${styles["col"]}`}>
+                    <h3
+                      className={`${styles["item-title"]} item-title horizontal-move`}
+                      data-speed={width <= 768 ? 0 : 2}
+                    >
+                      Decoration Mirors
+                    </h3>
+                    <p className={styles["item-description"]}>
+                      Iran Glass Technology with more than 40 years of
+                      experience and with the aim of meeting the needs of
+                      customers and improving the quality of products since 2001
+                      has changed its name and created the Iranian glass
+                      technology brand (with the brand name Gilda Glass)
+                    </p>
+                    <MoreButton to="/" className={styles["info-button"]}>
+                      More information
+                    </MoreButton>
+                  </div>
+                </article>
+
+                <article
+                  className={`row ${styles["work-item"]} ${styles["reverse"]}`}
+                >
+                  <div
+                    className={`${styles["order-desktop-2"]} ${styles["col"]} ${styles["image-col"]}`}
                   >
-                    Smart Monitor Mirors
-                  </h3>
-                  <p className={styles["item-description"]}>
-                    Iran Glass Technology with more than 40 years of experience
-                    and with the aim of meeting the needs of customers and
-                    improving the quality of products since 2001 has changed its
-                    name and created the Iranian glass technology brand (with
-                    the brand name Gilda Glass)
-                  </p>
-                  <MoreButton to="/" className={styles["info-button"]}>
-                    More information
-                  </MoreButton>
-                </div>
-              </article>
+                    <h3
+                      className={`${styles["item-title"]} ${styles["item-title-bordered"]} item-title-bordered d-mobile-none item-title-2 horizontal-move`}
+                      data-speed={width <= 768 ? 0 : -2}
+                    >
+                      Smart Monitor Mirors
+                    </h3>
+                    <div
+                      className={`${styles["item-image-holder"]} d-mobile-flex image-container`}
+                    >
+                      <div className="reveal-cover"></div>
+                      <img
+                        className={`${styles["item-image"]} reveal-image`}
+                        src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
+                        alt="work 2"
+                      />
+                    </div>
+                  </div>
+                  <div className={`${styles["col"]}`}>
+                    <h3
+                      className={`${styles["item-title"]} item-title-2 horizontal-move`}
+                      data-speed={width <= 768 ? 0 : -2}
+                    >
+                      Smart Monitor Mirors
+                    </h3>
+                    <p className={styles["item-description"]}>
+                      Iran Glass Technology with more than 40 years of
+                      experience and with the aim of meeting the needs of
+                      customers and improving the quality of products since 2001
+                      has changed its name and created the Iranian glass
+                      technology brand (with the brand name Gilda Glass)
+                    </p>
+                    <MoreButton to="/" className={styles["info-button"]}>
+                      More information
+                    </MoreButton>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
+        </React.Fragment>
       </section>
     </motion.main>
   );
