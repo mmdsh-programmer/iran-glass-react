@@ -295,6 +295,10 @@ body {
   background-color: var(--grey-darken-3);
 }
 
+.home-footer.grey-shadow-top {
+  box-shadow: 0 -10px var(--grey-darken-3);
+}
+
 @media screen and (max-width: 575px) {
   .d-mobile-none {
     display: none;

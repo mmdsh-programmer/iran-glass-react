@@ -49,7 +49,7 @@ export default function App() {
           </Switch>
         </AnimatePresence>
         {location.pathname === "/" ? (
-          <Footer classes="home-footer" />
+          <Footer classes="home-footer grey-shadow-top" />
         ) : (
           <Footer />
         )}
