@@ -83,7 +83,7 @@ export default function ProductView() {
         <div className={`row ${styles["product-images"]}`}>
           <img
             src={
-              process.env.PUBLIC_URL + "/images/product-view/product-image.png"
+              process.env.PUBLIC_URL + "/images/product-view/product-image.avif"
             }
             alt="product 1"
           />
@@ -91,14 +91,14 @@ export default function ProductView() {
           <img
             src={
               process.env.PUBLIC_URL +
-              "/images/product-view/product-image-2.png"
+              "/images/product-view/product-image-2.avif"
             }
             alt="product 2"
           />
 
           <img
             src={
-              process.env.PUBLIC_URL + "/images/product-view/product-image.png"
+              process.env.PUBLIC_URL + "/images/product-view/product-image.avif"
             }
             alt="product 1"
           />

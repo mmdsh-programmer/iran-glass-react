@@ -130,6 +130,7 @@ table {
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -139,6 +140,7 @@ table {
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -148,6 +150,7 @@ table {
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -156,6 +159,7 @@ table {
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
+  font-display: swap;
 }
 
 @media (prefers-reduced-motion: no-preference) {

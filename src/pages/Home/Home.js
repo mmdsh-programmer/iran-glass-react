@@ -338,7 +338,7 @@ export default function Home(props) {
             <img
               alt="Iran Glass"
               title="Iran Glass"
-              src={process.env.PUBLIC_URL + "/images/home/image-1.png"}
+              src={process.env.PUBLIC_URL + "/images/home/image-1.avif"}
               className="reveal-image"
             />
           </div>
@@ -348,7 +348,7 @@ export default function Home(props) {
           >
             <div className={`${styles["reveal-cover"]} reveal-cover`}></div>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
+              src={process.env.PUBLIC_URL + "/images/home/image-2.avif"}
               alt="hero"
               title="Iran Glass"
               className="reveal-image"
@@ -384,7 +384,7 @@ export default function Home(props) {
         <div className={`${styles["quote-border"]}`}>
           <div className={styles["quote-image-holder"]}>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
+              src={process.env.PUBLIC_URL + "/images/home/quote-image.avif"}
               alt="quote"
               title="quote"
             />
@@ -437,7 +437,9 @@ export default function Home(props) {
                       <div className="reveal-cover"></div>
                       <img
                         className={`${styles["item-image"]} reveal-image`}
-                        src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
+                        src={
+                          process.env.PUBLIC_URL + "/images/home/work-1.avif"
+                        }
                         alt="work 1"
                       />
                     </div>
@@ -480,7 +482,9 @@ export default function Home(props) {
                       <div className="reveal-cover"></div>
                       <img
                         className={`${styles["item-image"]} reveal-image`}
-                        src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
+                        src={
+                          process.env.PUBLIC_URL + "/images/home/work-2.avif"
+                        }
                         alt="work 2"
                       />
                     </div>

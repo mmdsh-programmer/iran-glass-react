@@ -26,7 +26,7 @@ export default function CategoryDetails() {
         <div className={styles["background"]}>
           <img
             className={styles["background-image"]}
-            src={process.env.PUBLIC_URL + "/images/category/hero-image.png"}
+            src={process.env.PUBLIC_URL + "/images/category/hero-image.avif"}
             alt="hero"
           />
         </div>
@@ -102,7 +102,7 @@ export default function CategoryDetails() {
               <img
                 className={styles["image"]}
                 src={
-                  process.env.PUBLIC_URL + "/images/category/product-image.png"
+                  process.env.PUBLIC_URL + "/images/category/product-image.avif"
                 }
                 alt="product"
                 title="product image"
@@ -127,32 +127,32 @@ export default function CategoryDetails() {
         >
           <div className={styles["image-holder"]}>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/image-2.png"}
+              src={process.env.PUBLIC_URL + "/images/home/image-2.avif"}
               alt="gallery-item-1"
             />
           </div>
           <div className={styles["image-holder"]}>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/quote-image.png"}
+              src={process.env.PUBLIC_URL + "/images/home/quote-image.avif"}
               alt="gallery-item-2"
             />
           </div>
           <div className={styles["image-holder"]}>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/work-1.jpg"}
+              src={process.env.PUBLIC_URL + "/images/home/work-1.avif"}
               alt="gallery-item-3"
             />
           </div>
           <div className={styles["image-holder"]}>
             <img
-              src={process.env.PUBLIC_URL + "/images/home/work-2.jpg"}
+              src={process.env.PUBLIC_URL + "/images/home/work-2.avif"}
               alt="gallery-item-4"
             />
           </div>
           <div className={styles["image-holder"]}>
             <img
               src={
-                process.env.PUBLIC_URL + "/images/category/gallery-image-4.png"
+                process.env.PUBLIC_URL + "/images/category/gallery-image-4.avif"
               }
               alt="gallery-item-5"
             />
@@ -160,7 +160,7 @@ export default function CategoryDetails() {
           <div className={styles["image-holder"]}>
             <img
               src={
-                process.env.PUBLIC_URL + "/images/category/gallery-image-2.png"
+                process.env.PUBLIC_URL + "/images/category/gallery-image-2.avif"
               }
               alt="gallery-item-6"
             />
@@ -168,7 +168,7 @@ export default function CategoryDetails() {
           <div className={styles["image-holder"]}>
             <img
               src={
-                process.env.PUBLIC_URL + "/images/category/product-image.png"
+                process.env.PUBLIC_URL + "/images/category/product-image.avif"
               }
               alt="gallery-item-7"
             />
@@ -176,7 +176,7 @@ export default function CategoryDetails() {
           <div className={styles["image-holder"]}>
             <img
               src={
-                process.env.PUBLIC_URL + "/images/category/gallery-image-1.png"
+                process.env.PUBLIC_URL + "/images/category/gallery-image-1.avif"
               }
               alt="gallery-item-8"
             />
@@ -184,7 +184,7 @@ export default function CategoryDetails() {
           <div className={styles["image-holder"]}>
             <img
               src={
-                process.env.PUBLIC_URL + "/images/category/gallery-image-3.png"
+                process.env.PUBLIC_URL + "/images/category/gallery-image-3.avif"
               }
               alt="gallery-item-9"
             />
