@@ -1,13 +1,60 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./Footer.module.css";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function Footer(props) {
+  gsap.registerPlugin(ScrollTrigger);
   const { classes } = props;
   const customFooter = classNames(styles["main-footer"], classes);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const movementClamp = gsap.utils.clamp(55, 200);
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: "top bottom",
+        scrub: 2,
+        onUpdate: ({ progress }) => {
+          let percentAmount = progress * 100 * 3;
+          gsap.fromTo(
+            "#masterTextPath",
+            {
+              attr: {
+                startOffset: gsap.getProperty("#masterTextPath", "startOffset")
+                  .animVal.value,
+              },
+            },
+            {
+              ease: "power3.out",
+              duration: 2,
+              attr: {
+                startOffset: movementClamp(percentAmount),
+              },
+            }
+          );
+        },
+      },
+    });
+  });
+
   return (
-    <footer className={customFooter}>
+    <footer className={customFooter} ref={footerRef}>
+      <svg id={styles["textPath"]} viewBox="0 0 1920 1080">
+        <path
+          id="master"
+          d="M0,120.673s303.155-270.779,676.947,0,132.446,756.415,0,841.769S291.382,1174.357,0,962.443"
+          fill="none"
+        />
+        <text id="mainText" className={styles["master-text-path"]} fill="#fff">
+          <textPath id="masterTextPath" xlinkHref="#master" startOffset="0">
+            Interested in our products get in touch for more information
+          </textPath>
+        </text>
+      </svg>
       <div className={`container ${styles["container"]}`}>
         <div className={`row flex-column ${styles["contact"]}`}>
           <h4 className={styles["contact-title"]}>Simply contact us via</h4>
@@ -166,7 +213,7 @@ export default function Footer(props) {
             <a
               href="https://wearecolorz.com"
               target="_blank"
-              rel="noopener"
+              rel="noreferrer"
               className={styles["copyright-link"]}
             >
               Design & development by Colorz.

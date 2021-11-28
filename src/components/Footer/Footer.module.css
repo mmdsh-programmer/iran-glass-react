@@ -11,6 +11,10 @@
   color: var(--grey-darken-1);
 }
 
+.main-footer {
+  position: relative;
+}
+
 .main-footer .footer-info-title {
   margin-bottom: 30px;
   font-family: NittiGrotesk, sans-serif, Helvetica, Arial;
@@ -153,6 +157,21 @@
   height: 30px;
   vertical-align: middle;
   margin: 0 9px 5px 12px;
+}
+
+#textPath {
+  width: 100%;
+  height: auto;
+  font-family: SaolDisplay, sans-serif, Helvetica, Arial;
+  word-spacing: 5px;
+  font-size: 45px;
+  position: absolute;
+  left: 0;
+  top: -240px;
+}
+
+.master-text-path {
+  transform: translateY(60px);
 }
 
 @media screen and (max-width: 1850px) {
