@@ -11,7 +11,7 @@
   color: var(--grey-darken-1);
 }
 
-.main-footer {
+.main-footer .container {
   position: relative;
 }
 
@@ -181,6 +181,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  #textPath {
+    /* font-size: 35px; */
+    top: -150px;
+  }
 }
 
 @media screen and (max-width: 575px) {

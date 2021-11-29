@@ -4,15 +4,17 @@ import classNames from "classnames";
 import styles from "./Footer.module.css";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import useWindowSize from "hooks/useWindowSize";
 
 export default function Footer(props) {
   gsap.registerPlugin(ScrollTrigger);
   const { classes } = props;
   const customFooter = classNames(styles["main-footer"], classes);
   const footerRef = useRef(null);
+  const { width } = useWindowSize();
 
   useEffect(() => {
-    const movementClamp = gsap.utils.clamp(55, 200);
+    const movementClamp = gsap.utils.clamp(20, 200);
     gsap.timeline({
       scrollTrigger: {
         trigger: footerRef.current,
@@ -43,19 +45,26 @@ export default function Footer(props) {
 
   return (
     <footer className={customFooter} ref={footerRef}>
-      <svg id={styles["textPath"]} viewBox="0 0 1920 1080">
-        <path
-          id="master"
-          d="M0,120.673s303.155-270.779,676.947,0,132.446,756.415,0,841.769S291.382,1174.357,0,962.443"
-          fill="none"
-        />
-        <text id="mainText" className={styles["master-text-path"]} fill="#fff">
-          <textPath id="masterTextPath" xlinkHref="#master" startOffset="0">
-            Interested in our products get in touch for more information
-          </textPath>
-        </text>
-      </svg>
       <div className={`container ${styles["container"]}`}>
+        <svg
+          id={styles["textPath"]}
+          viewBox={`0 0 ${width > 768 ? width : width + 400} 1080`}
+        >
+          <path
+            id="master"
+            d="M0,120.673s303.155-270.779,676.947,0,132.446,756.415,0,841.769S291.382,1174.357,0,962.443"
+            fill="none"
+          />
+          <text
+            id="mainText"
+            className={styles["master-text-path"]}
+            fill="#bdbdbd"
+          >
+            <textPath id="masterTextPath" xlinkHref="#master" startOffset="0">
+              Interested in our products? get in touch for more information
+            </textPath>
+          </text>
+        </svg>
         <div className={`row flex-column ${styles["contact"]}`}>
           <h4 className={styles["contact-title"]}>Simply contact us via</h4>
           <a
