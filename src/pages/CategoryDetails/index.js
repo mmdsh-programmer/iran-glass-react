@@ -1,3 +1,3 @@
 import CategoryDetails from "./CategoryDetails";
 
-export { CategoryDetails };
+export default CategoryDetails;

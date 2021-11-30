@@ -269,10 +269,6 @@
   max-width: 652px;
 }
 
-.work-item.reverse .item-title {
-  /* transform: translateX(clamp(300px, 13.56vw, 356px)); */
-}
-
 .work-item .item-description {
   max-width: 500px;
   margin: 60px 0 78px 3.39vw;

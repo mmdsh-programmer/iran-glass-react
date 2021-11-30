@@ -2,16 +2,16 @@ import "styles/App.css";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { Home } from "pages/Home";
-import { NotFound } from "pages/NotFound";
-import { CategoryDetails } from "pages/CategoryDetails";
 import { SmoothScroll } from "./SmoothScroll";
 import { AnimatePresence } from "framer-motion";
 import { Preloader } from "./Preloader";
-import { useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("pages/Home"));
+const CategoryDetails = lazy(() => import("pages/CategoryDetails"));
+const NotFound = lazy(() => import("pages/NotFound"));
 
 export default function App() {
-  const [isLoading, setLoading] = useState(true);
   const location = useLocation();
 
   const calcLatency = () => {
@@ -20,25 +20,8 @@ export default function App() {
     return latency;
   };
 
-  const fakeRequest = (timeout) => {
-    return new Promise((resolve) =>
-      setTimeout(() => resolve(timeout), (timeout + 1000) * 2 + 600)
-    );
-  };
-
-  useEffect(() => {
-    fakeRequest(calcLatency()).then(() => {
-      setLoading(false);
-    });
-  });
-
   return (
-    <>
-      {/* {isLoading ? (
-        <Preloader latency={calcLatency()} />
-      ) : (
-        
-      )} */}
+    <Suspense fallback={null}>
       <SmoothScroll>
         <Header />
         <AnimatePresence exitBeforeEnter initial={true}>
@@ -54,6 +37,6 @@ export default function App() {
           <Footer />
         )}
       </SmoothScroll>
-    </>
+    </Suspense>
   );
 }
