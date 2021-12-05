@@ -3,13 +3,13 @@ import "styles/index.css";
 import ReactDOM from "react-dom";
 import App from "components/App";
 import { BrowserRouter as Router } from "react-router-dom";
-import("fonts/NittiGrotesk-Light.ttf");
-import("fonts/NittiGrotesk-Light.woff2");
-import("fonts/NittiGrotesk-Medium.ttf");
-import("fonts/NittiGrotesk-Medium.woff2");
-import("fonts/SaolDisplay-Light.ttf");
-import("fonts/SaolDisplay-Light.woff2");
-import("fonts/Shabnam.ttf");
+import(/* webpackPreload: true */ "fonts/NittiGrotesk-Light.ttf");
+import(/* webpackPreload: true */ "fonts/NittiGrotesk-Light.woff2");
+import(/* webpackPreload: true */ "fonts/NittiGrotesk-Medium.ttf");
+import(/* webpackPreload: true */ "fonts/NittiGrotesk-Medium.woff2");
+import(/* webpackPreload: true */ "fonts/SaolDisplay-Light.ttf");
+import(/* webpackPreload: true */ "fonts/SaolDisplay-Light.woff2");
+import(/* webpackPreload: true */ "fonts/Shabnam.ttf");
 
 ReactDOM.render(
   <Router>
