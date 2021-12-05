@@ -1,6 +1,6 @@
 import React from "react";
-import "styles/index.css";
 import ReactDOM from "react-dom";
+import "./index.css";
 import App from "components/App";
 import { BrowserRouter as Router } from "react-router-dom";
 import(/* webpackPreload: true */ "fonts/NittiGrotesk-Light.ttf");
