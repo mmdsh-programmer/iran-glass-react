@@ -1,4 +1,3 @@
-import "styles/App.css";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -6,6 +5,7 @@ import { SmoothScroll } from "./SmoothScroll";
 import { AnimatePresence } from "framer-motion";
 import { Preloader } from "./Preloader";
 import { lazy, Suspense } from "react";
+import(/* webpackPreload: true */ "styles/App.css");
 
 const Home = lazy(() => import("pages/Home"));
 const CategoryDetails = lazy(() => import("pages/CategoryDetails"));
