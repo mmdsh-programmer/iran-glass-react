@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "SaolDisplay";
+  src: local("SaolDisplay"), url(fonts/SaolDisplay-Light.woff2) format("woff2"),
+    url(fonts/SaolDisplay-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: "NittiGrotesk";
+  src: local("NittiGrotesk"),
+    url(fonts/NittiGrotesk-Medium.woff2) format("woff2"),
+    url(fonts/NittiGrotesk-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: "NittiGrotesk-Light";
+  src: local("NittiGrotesk-Light"),
+    url(fonts/NittiGrotesk-Light.woff2) format("woff2"),
+    url(fonts/NittiGrotesk-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: "Kalameh";
+  src: local("Kalameh"), url(/src/fonts/Shabnam.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
